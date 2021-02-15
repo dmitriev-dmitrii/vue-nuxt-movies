@@ -1,0 +1,27 @@
+
+/* общие стили для всех страниц  */
+@import "global/normalize.scss";
+@import "global/colors.scss";
+@import "global/body.scss";
+
+/* общие стили для всех страниц  */
+
+/*  общие компоненты для страниц */
+
+@import "components/footer.scss";
+@import "components/header.scss";
+@import "components/buttons.scss";
+@import "components/modal.scss";
+@import "components/hide-list";
+/*  общие компоненты для страниц */
+
+
+/* стили отдельных блоков */
+@import "components/films__list.scss";
+
+@import "pages/search/search.scss";
+@import "pages/movie/movie.scss";
+
+/* стили отдельных блоков */
+
+

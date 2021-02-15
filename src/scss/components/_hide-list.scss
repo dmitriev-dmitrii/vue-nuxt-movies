@@ -1,0 +1,37 @@
+.hide-items__parent
+{
+overflow: hidden;
+position: relative;
+
+}
+.hide-items__child
+{
+opacity: 1;
+transition: opacity 3s linear;
+}
+.hide-items__child-hiden
+{
+position: absolute; 
+transform: translateY(-1000%);
+opacity: 0;
+color: transparent;
+height: 0;
+width: 0;
+
+}
+
+
+.hide-items__show-items
+{
+font-size: 1.4em;
+padding: 1rem 1.5rem;
+display: block;
+margin: 0 auto;
+border-radius: 7px ;
+border: none;
+
+&:hover
+{
+	box-shadow:  0 0 7px 2px rgba(252, 252, 252, 0.3);
+}
+}

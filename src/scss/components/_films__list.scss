@@ -1,0 +1,164 @@
+
+.films__list 
+{
+display: flex;
+flex-wrap: wrap;
+overflow: hidden;
+transition: all 2s linear;
+opacity: 0;
+padding: 3rem 2rem;
+}
+
+.films__list.active {
+		opacity: 1;
+	}
+
+.movie-item {
+
+display: block;
+border-radius: 7px;
+width: 30rem;
+margin:0.5rem;
+overflow: hidden;
+transition: all 0.3s linear;
+border: 1px solid rgba(255, 255, 255, 0.1);
+background-color: $mainBgColor;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+&:hover,&:focus
+{
+	box-shadow:  0 1px 4px 1px $accentColor;
+}
+
+}
+
+.movie-item:hover.movie-item .movie-item__img
+{
+	filter: brightness(110%)
+}
+
+.movie-item__img {
+	width: 100%;
+	object-fit: cover ;
+	transition: all 0.3s linear;
+	filter: brightness(80%);
+    height: 45rem;
+	font-weight: 300;
+	line-height: 3;  
+	text-align: center;
+	display: block;
+	position: relative;
+
+	&:after { 
+		content: "\f1c5" " " attr(alt);
+		font-size: 2rem;
+		color: rgb(100, 100, 100);
+		display: block;
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+	}
+}
+
+.movie-item__title ,.movie-item__score,.movie-item__year
+{
+padding:0.5rem 1rem ;
+}
+
+.movie-item__title {
+font-size: 2em;
+font-weight: 600;
+text-overflow: ellipsis;
+overflow: hidden;
+}
+
+.movie-item__score,
+.movie-item__year
+{
+	font-weight: 600;
+	font-size: 1.8em;
+	color: $accentColor;
+	&::before
+	{
+		font-weight: 300;
+		color: $minorTxtColor;
+
+	}
+	}
+
+.movie-item__score {
+
+&::before
+{
+	content: 'Рейтинг:';
+}
+}
+
+.movie-item__year {
+
+	&::before
+	{
+	content: 'Год:';
+	}
+}
+
+@media (min-width: 575.98px){ 
+	.movie-item {
+		width: 25rem;
+		}
+	.movie-item__img {
+		height: 35rem;
+ }
+
+}
+ @media (min-width: 767.98px)
+ {
+.movie-item {
+
+		width: 34rem;
+		}
+	.movie-item__img {
+		height: 49rem;
+}
+  } 
+ 
+ @media (min-width: 991.98px)
+ {
+	.movie-item 
+	{
+		width: 25rem;
+	}
+	.movie-item__img {
+	height: 35rem;
+ }
+  }
+ 
+  @media (min-width: 1199.98px){
+	.movie-item 
+	{
+		width: 20rem;
+	}
+	.movie-item__img {
+	height: 30rem;
+}
+.movie-item__title {
+	font-size: 1.8em;
+	}
+	
+	.movie-item__score,
+	.movie-item__year
+	{
+
+		font-size: 1.6em;
+		}
+ }
+ 
+ @media (min-width: 1399.98px){
+ 
+ }

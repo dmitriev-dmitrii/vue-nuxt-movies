@@ -1,0 +1,59 @@
+html
+{
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+}
+
+body
+{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	margin: 5em 0  2em  0;
+	padding:0 ;
+    line-height: 1.5;
+	background-color: $bodyColor;
+	color: $mainTxtColor;
+	  *,
+	  *::before,
+	  *::after {
+		box-sizing: inherit;
+	}
+}
+
+
+h1,h2,h3,h4,h5,h6,p
+{
+	margin: 0;
+	padding: 0;
+}
+
+ul,li
+{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+}
+
+
+
+a
+{
+text-decoration: none;
+color: inherit;
+display: block;
+}
+
+
+.contanier
+{
+max-width: 1300px;
+margin: 0 auto;
+}
+
+button
+{
+	outline: none;
+	cursor: pointer;
+
+}
