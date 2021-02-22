@@ -83,8 +83,8 @@ function createDataMovie(item) {
 
 <h1 class="movie__title ">`+ item.title + `</h1>	
 <div  class="movie__poster">
-<label for="`+ item.id + `"><img class="movie__img" src="https://image.tmdb.org/t/p/w500`+item.poster_path+`"  alt="`+item.title+`"></label>
-<button id="`+ item.id + `" openModalName='`+ item.id + `' class="movie__video-btn button">Трейлер</button>
+<img class="movie__img" src="https://image.tmdb.org/t/p/w500`+item.poster_path+`"  alt="`+item.title+`">
+<button openModalName='`+ item.id + `' class="movie__video-btn button">Трейлер</button>
 </div> 
 
 <div class="movie__info">
@@ -170,9 +170,10 @@ actors.cast.forEach(actor => {
 });
 }
 
-hideList( movieCasts, 0.9 , 20 ,movieId,`все `+(actors.cast.length)+` актеров` ,'скрыть ')
+hideList( movieCasts, 0.9 , 20 ,movieId,`еще `+(actors.cast.length-20)+` актеров` ,'скрыть ')
 
 }
+
 
 
 const MediaQ = window.matchMedia("(min-width: 767.98px)")

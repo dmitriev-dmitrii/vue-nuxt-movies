@@ -1,0 +1,142 @@
+
+.trilogy__collection
+{
+box-shadow:  0 1px 4px 1px rgba(255, 255, 255, 0.3);
+border-radius:7px ;
+background: linear-gradient(45deg, rgba(3, 15, 92, 0.2)15%, rgba(0, 0, 0, 1) ,rgba(3, 15, 92, 0.1)80%);
+
+// box-shadow: 0 0 9px 1px $accentColor inset;
+margin-bottom: 2rem;
+padding: 0;
+}
+
+.trilogy__collection-info
+{
+width: 100%;
+overflow: hidden;
+
+}
+
+.trilogy__collection-figure
+{
+width: 100%;
+margin: 0;
+position: relative;
+}
+
+.trilogy__collection-figcaption
+{
+padding: 2rem;
+}
+.trilogy__collection-title
+{
+font-size: 2.5rem;
+font-weight: 700;
+position: absolute;
+
+left: 3rem;
+top: 3rem;
+
+}
+.trilogy__collection-length
+{
+	position: absolute;
+	left: 3rem;
+	top: 7rem;
+	font-size: 2rem;
+	&::before
+	{
+		font-weight: 300;
+		font-style: normal;
+		font-size: 1.3rem;
+		text-shadow:  0 0 0 ;
+		content: 'Всего Частей: ';	
+	}
+}
+.trilogy__collection-overview
+{
+	font-size: 1.5rem;
+	font-style: italic;
+	color: $minorTxtColor;
+}
+.trilogy__collection-img
+{
+width: 100%;
+height: 30rem;
+object-fit: cover;
+object-position:center;
+opacity: 0.5;
+
+}
+
+@media (min-width: 575.98px){ 
+ 
+ }
+ 
+ @media (min-width: 767.98px)
+{
+	.trilogy__collection-figure
+	{
+display: flex;
+justify-content: space-between;
+	}
+
+.trilogy__collection-overview
+{
+font-size: 1.5rem;
+text-align: right;
+
+padding: 2rem;
+}
+.trilogy__collection-img
+{
+width: 50%;
+}
+
+} 
+ 
+ @media (min-width: 991.98px)
+ {
+	.trilogy__collection-overview
+	{
+	font-size: 1.6rem;
+	}
+	.trilogy__collection-title
+{
+font-size: 2.7rem;
+}
+.trilogy__collection-length
+{
+	font-size: 2rem;
+	&::before
+	{
+		font-size: 1.6rem;
+	}
+}
+}
+
+  @media (min-width: 1199.98px){
+ 
+.trilogy__collection-overview
+{
+	font-size: 1.8rem;
+}
+
+.trilogy__collection-title
+{
+font-size: 2.8rem;
+}
+.trilogy__collection-length
+{
+font-size: 2.1rem;
+&::before
+{
+	font-size: 1.8rem;
+}
+}
+
+ }
+ 
+ @media (min-width: 1399.98px){
+ 
+ }

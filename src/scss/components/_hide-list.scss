@@ -2,36 +2,39 @@
 {
 overflow: hidden;
 position: relative;
-
 }
-.hide-items__child
+
+.hide-items__child-visible
 {
+
 opacity: 1;
-transition: opacity 3s linear;
+transform: translateY(0%) ;
+
+transition: all 1s 0.3s linear;
 }
-.hide-items__child-hiden
+
+// .hide-items__child-hiden
+// {
+// стили прописаны в js под id кнопки
+// }
+
+.hide-items__btn-wrapper
 {
-position: absolute; 
-transform: translateY(-1000%);
-opacity: 0;
-color: transparent;
-height: 0;
-width: 0;
-
+width: 100%;
+padding: 2rem;
 }
 
-
-.hide-items__show-items
+.hide-items__show-items-btn 
 {
 font-size: 1.4em;
 padding: 1rem 1.5rem;
 display: block;
 margin: 0 auto;
 border-radius: 7px ;
-border: none;
 
 &:hover
 {
 	box-shadow:  0 0 7px 2px rgba(252, 252, 252, 0.3);
 }
 }
+

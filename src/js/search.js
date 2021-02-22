@@ -43,6 +43,7 @@ searchQuery(searchInput.value)
 searchForm.addEventListener('submit', function(e) {
 e.preventDefault();
 }, false);
+
 // отключил перезагрузку страницы при отправке
 
 // при событии сабмит с поля поиска
@@ -83,16 +84,12 @@ moviesArray=moviesArray.concat(searchResult)
 searchResultList.classList.add('active')
 searchResultTitle.classList.add('active')
 
-
 searchResultTitle.innerHTML = `Поиск по запросу :<span  class="search-form__results-value">`+inputValue+`</span><br>Результатов найдено :`+data.results.length+``;
 
 })
 // catch в случае ошибки
 .catch(error => console.log(error));
 }
-
-
-
 
 if (localStorage.getItem ('searchResult').length > 0) {
 
