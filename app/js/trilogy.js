@@ -14,6 +14,7 @@ return requestURL;
 
 function trilogyQuery(collectionId,trilogyCollectionHtml) 
 {
+createPreloader(trilogyCollectionHtml,collectionId,true);
 
 sendRequest(generateTrilogyhUrl(collectionId))
 
@@ -50,7 +51,7 @@ trilogyCollectionHtml.insertAdjacentHTML("afterbegin",
 `
 );
 
-
+createPreloader(trilogyCollectionHtml,collectionId,false);
 trilogyCollectionHtml.classList.add('active')
 
 hideList( trilogyCollectionHtml, 0.99 , 1 ,collectionId,`развернуть список фильмов`,'скрыть список') 

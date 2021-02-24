@@ -36,7 +36,6 @@ searchSubmit.classList.add ('active')
 // при событии сабмит с поля поиска
 searchForm.onsubmit = () => 
 {
-
 searchQuery(searchInput.value) 
 }
 
@@ -45,9 +44,7 @@ e.preventDefault();
 }, false);
 
 // отключил перезагрузку страницы при отправке
-
 // при событии сабмит с поля поиска
-
 
 // url для fetch c данными из инпута
 function generateSearchUrl(inputValue) 
@@ -62,9 +59,12 @@ return requestURL;
 
 function searchQuery(inputValue) 
 {
+searchResultTitle.classList.add('active')
+searchResultTitle.innerHTML = `Идет поиск`;
+createPreloader(searchResultTitle,'search',true);
+
 
 sendRequest(generateSearchUrl(inputValue))
-
 .then((data) => {
 
 searchResultList.classList.remove('active')
@@ -77,21 +77,21 @@ localStorage.setItem ('searchResult', JSON.stringify(data.results));
 
 searchResult = JSON.parse (localStorage.getItem ('searchResult')); 
 
-
 addFilmsList(searchResult, searchResultList)
 moviesArray=moviesArray.concat(searchResult)
 
 searchResultList.classList.add('active')
-searchResultTitle.classList.add('active')
+
 
 searchResultTitle.innerHTML = `Поиск по запросу :<span  class="search-form__results-value">`+inputValue+`</span><br>Результатов найдено :`+data.results.length+``;
-
+createPreloader(trilogyCollectionHtml,'search',false);
 })
 // catch в случае ошибки
 .catch(error => console.log(error));
 }
 
-if (localStorage.getItem ('searchResult').length > 0) {
+if (localStorage.getItem ('searchResult').length > 0) 
+{
 
 searchResult =  JSON.parse (localStorage.getItem ('searchResult'));
 console.log(searchResult);

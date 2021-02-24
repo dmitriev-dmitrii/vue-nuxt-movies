@@ -11,26 +11,32 @@ function sendRequest(url) {
 			return response.json()
 		}
 		else {
-			return response.json()
+			console.log('eror');
+			console.log(response.status);
+			// return response.json()
 		}
 	})
 }
 
 // при вызове рендерим Html из масива  moviesArray в filmsListHtml
 
-function addFilmsList(moviesArray, filmsListHtml) {
+function addFilmsList(moviesArray, filmsListHtml) 
+
+{
 
 	moviesArray.forEach(item => {
 
-	let	movieYear
+let	movieYear
 
-if (item.release_date.length > 0) {
+if (item.release_date !== undefined) 
+{
 	movieYear=item.release_date.substr(0, 4);
-} else {
+} else 
+{
 	movieYear='';
 }
 
-		filmsListHtml.insertAdjacentHTML("beforeend",
+	filmsListHtml.insertAdjacentHTML("beforeend",
 
 			`
 <a href="movie.html"  movie-id="`+ item.id + `" class="movie-item">
@@ -40,9 +46,9 @@ if (item.release_date.length > 0) {
 		<p class="movie-item__score">	 `+ item.vote_average + `</p>
 </a> 
 `
-		);
+	);
 
-	});
+});
 
 	movieHtmlItems = document.querySelectorAll('.movie-item')
 
@@ -79,11 +85,11 @@ function createModals() {
 
 	closeModalBtn.forEach(e => {
 		e.addEventListener('click', closeModal)
-
 	});
 
 
-	function openModal() {
+	function openModal() 
+	{
 		let modalName = this.getAttribute("openModalName");
 
 		let modalWrapper = document.querySelector(`[modalName="${modalName}"]`);
@@ -104,7 +110,6 @@ function createModals() {
 
 	}
 }
-
 
 function hideList(htmlList,HideCalculate =0.5, minValue=10 ,id=1 ,showTxt ='показать еще',hideTxt= 'скрыть') 
 {
@@ -185,8 +190,6 @@ whatHide.forEach(item =>
 	console.log(item.classList);
     });
 
-
-
 			if (showMoreButton.innerHTML === showTxt) 
 			{
 				showMoreButton.innerHTML = hideTxt;
@@ -195,3 +198,67 @@ whatHide.forEach(item =>
 			}
 }
 }}
+
+
+const goTopBtn = document.querySelector('.go-top-btn');
+
+goTopBtn.onclick = function goTop ()
+{
+	document.body.scrollTop = 0;
+	document.scrollingElement.scrollTop = 0;
+}
+
+window.onscroll = function () {
+	
+	if ( document.body.scrollTop > 500 || document.scrollingElement.scrollTop > 500 )
+	{
+		goTopBtn.style.display= 'block';
+	}
+	else
+	{
+		goTopBtn.style.display= 'none';
+	}
+}
+
+
+function createPreloader(htmlElement,id,show= true)
+{
+
+
+if ( show == true) 
+{
+
+	htmlElement.insertAdjacentHTML("beforeend",
+	`
+	<div class="preloader-wrapper preloader-`+id+` ">
+	<div class="preloader-chase">
+	<div class="preloader-chase-dot"></div>
+	<div class="preloader-chase-dot"></div>
+	<div class="preloader-chase-dot"></div>
+	<div class="preloader-chase-dot"></div>
+	<div class="preloader-chase-dot"></div>
+	<div class="preloader-chase-dot"></div>
+	</div>
+	</div>
+	`
+	);
+
+
+document.querySelector(`.preloader-`+id+``).style=
+`
+display:block;
+
+`
+} 
+
+else 
+{
+
+const preloader = document.querySelector(`.preloader-`+id+``)
+
+preloader.remove();
+
+
+}
+
+}

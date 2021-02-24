@@ -33,17 +33,24 @@ function generateActorsUrl(movieId)
 }
 
 
-function idQuery(url) {
+function idQuery(url)
+
+{
+
+createPreloader(movieWrapper,'idQuery',true);
+
   sendRequest(url)
     .then((data) => {
+createPreloader(movieWrapper,'idQuery',false);
 item=data
-      createDataMovie(item)
-    }) 
-      .then(() => {
-      
+createDataMovie(item)
+}) 
+
+.then(() => {
+
 videoQuery(generateVideoUrl(movieId))
 
-          })
+    })
     .catch(error => console.log(error));
 }
 
@@ -62,11 +69,18 @@ createVideo(data)
     .catch(error => console.log(error));
 }
 
-function ActorsQuery(url) {
+function ActorsQuery(url) 
+{
+
+
   sendRequest(url)
     .then((data) => {
+
+      createPreloader(movieCasts,'ActorsQuery',true);
       createActors(data);
+
     })
+
     .catch(error => console.log(error));
 }
 
@@ -157,6 +171,8 @@ function createActors(actors)
 {
 
 {
+
+createPreloader(movieCasts,'ActorsQuery',false);
 actors.cast.forEach(actor => {
 
   movieCasts.insertAdjacentHTML("beforeend",
@@ -170,10 +186,9 @@ actors.cast.forEach(actor => {
 });
 }
 
-hideList( movieCasts, 0.9 , 20 ,movieId,`все `+(actors.cast.length)+` актеров` ,'скрыть ')
+hideList( movieCasts, 0.9 , 20 ,movieId,`всего `+(actors.cast.length)+`` ,'скрыть ')
 
 }
-
 
 const MediaQ = window.matchMedia("(min-width: 767.98px)")
 function showBg(MediaQ) {
@@ -206,7 +221,4 @@ else
 );
 }
 }
-
-
-
 

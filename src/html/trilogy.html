@@ -22,8 +22,8 @@
 <body>
 
     @include('./components/header.html')
-
-<main class="contanier trilogy__wrapper">
+<div class="contanier">
+<div class=" trilogy__wrapper">
     <h1 class="trilogy__title">
 7 лучших трилогий в истории кино
     </h1>
@@ -41,7 +41,9 @@
     </div>
     <div class="films__list trilogy__collection ">
     </div>
-</main>
+</div>
+</div>
+@include('./components/go-top-btn.html')
 	@include('./components/footer.html')
 </body>
 </html>

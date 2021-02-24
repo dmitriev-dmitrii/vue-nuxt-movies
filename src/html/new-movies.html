@@ -22,8 +22,8 @@
 <body>
 
     @include('./components/header.html')
-
-<main class="new-movies__wrapper contanier">
+<div class="contanier">
+<div class="new-movies__wrapper ">
 
     <h1 class="new-movies__title">Новинки в мире Кино</h1>
     <div class="films__list new-movies__list">
@@ -33,8 +33,9 @@
 <button class="getmore__button button">Показать еще 20</button>
 </div>
 
-</main>
-
+</div>
+</div>
+@include('./components/go-top-btn.html')
 	@include('./components/footer.html')
 
 </body>

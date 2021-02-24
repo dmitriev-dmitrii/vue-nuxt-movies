@@ -1,0 +1,30 @@
+
+.go-top-btn 
+{
+display: none;
+
+padding:0.5rem 1rem;
+font-size: 2rem;
+color: $mainTxtColor;
+border-radius: 7px;
+	z-index: 7;
+
+	opacity: 0.5;
+	background-color: $minorTxtColor;
+	border: 1px solid transparent;
+
+	cursor: pointer;
+	transition: all 0.4s linear;
+	outline: none;
+	position: fixed;
+	bottom: 5vw;
+	right: 2vw;
+
+}
+.go-top-btn:hover,.go-top-btn:focus
+{
+	opacity: 1;
+	background-color: rgba(134, 134, 134, 0.815);
+	border: 1px solid white;
+	box-shadow: rgba(134, 134, 134, 0.815) 0 0 5px 3px;
+}

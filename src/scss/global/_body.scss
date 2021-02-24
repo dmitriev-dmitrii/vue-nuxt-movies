@@ -35,7 +35,6 @@ ul,li
 	list-style:none;
 }
 
-
 a
 {
 text-decoration: none;
@@ -47,13 +46,13 @@ display: block;
 {
 max-width: 1300px;
 margin: 0 auto;
+padding: 2rem;
 }
 
 button
 {
 	outline: none;
 	cursor: pointer;
-
 }
 
 img
@@ -74,3 +73,5 @@ img
 		border-top-right-radius:7px ;
 	}
 }
+
+
