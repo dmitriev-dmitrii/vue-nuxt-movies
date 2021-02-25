@@ -17,7 +17,7 @@ function newMoviesQuery(htmlList,pageNumber)
 
 {
 
-createPreloader(htmlList,'newMoviesQuery',true);
+createPreloader(htmlList,pageNumber,true);
 
 sendRequest(generateNewMoviesUrl(pageNumber))
 .then((data) => 
@@ -26,7 +26,7 @@ sendRequest(generateNewMoviesUrl(pageNumber))
 addFilmsList(data.results, htmlList)
 moviesArray=moviesArray.concat(data.results)
 htmlList.classList.add('active')
-createPreloader(htmlList,'newMoviesQuery',false);
+createPreloader(htmlList,pageNumber,false);
 })
 
 // catch в случае ошибки
@@ -42,7 +42,11 @@ newMoviesQuery(newMoviesHtml,curentGet)
 curentGet=curentGet+1;
 
 }
+document.onload
+{
 getMoreMovies(newMoviesHtml,curentGet) 
+}
+
 
 
 

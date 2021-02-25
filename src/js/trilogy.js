@@ -61,10 +61,24 @@ hideList( trilogyCollectionHtml, 0.99 , 1 ,collectionId,`развернуть с
 .catch(error => console.log(error));
 }
 
-trilogyQuery(264,trilogyCollection[0]);
-trilogyQuery(10,trilogyCollection[1]);
-trilogyQuery(1241,trilogyCollection[2]);
-trilogyQuery(119,trilogyCollection[3]);
-trilogyQuery(230,trilogyCollection[4]);
-trilogyQuery(84,trilogyCollection[5]);
-trilogyQuery(295,trilogyCollection[6]);
+setTimeout(() => 
+{
+	trilogyQuery(264,trilogyCollection[0])
+
+	trilogyQuery(10,trilogyCollection[1])
+	
+	trilogyQuery(1241,trilogyCollection[2])
+	
+	trilogyQuery(119,trilogyCollection[3])
+	
+	trilogyQuery(230,trilogyCollection[4])
+	
+	trilogyQuery(84,trilogyCollection[5])
+	
+	trilogyQuery(295,trilogyCollection[6])
+
+}, 0);
+
+
+
+

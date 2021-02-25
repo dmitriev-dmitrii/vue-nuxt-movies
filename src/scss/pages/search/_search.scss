@@ -8,11 +8,11 @@ padding: 2rem 0;
 .search-form__body 
 {
 border-radius: 7px;
-background:linear-gradient(to top,  rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.99)), url(../images/header-bg.jpg);
+background:linear-gradient(to top,  rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.99)), url(../images/search-bg.webp);
 background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-min-height: 50vh;
+background-position: 100% 40%;
+background-size: 120% auto;
+min-height: 60vh;
 display: flex;
 align-items: center;
 justify-content: center;

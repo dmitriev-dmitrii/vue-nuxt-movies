@@ -16,7 +16,7 @@ return requestURL;
 function topRatedQuery(htmlList,pageNumber) 
 
 {
-	createPreloader(htmlList,pageNumber,true);
+createPreloader(htmlList,pageNumber,true);
 sendRequest(generatetopRatedUrl(pageNumber))
 .then((data) => 
 {

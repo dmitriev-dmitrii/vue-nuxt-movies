@@ -206,7 +206,9 @@ function showBg(MediaQ) {
 }
   </style>
     `
+
   );
+
 }
 else 
 {
