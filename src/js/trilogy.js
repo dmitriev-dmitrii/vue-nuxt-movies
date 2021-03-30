@@ -6,7 +6,9 @@ let trilogyCollection = document.querySelectorAll('.trilogy__collection');
 
 function generateTrilogyhUrl(collectionId) 
 {
-let requestURL = 'https://api.themoviedb.org/3/collection/'+collectionId+'?api_key='+apiKey+'&language=ru';
+// let requestURL = 'https://api.themoviedb.org/3/collection/'+collectionId+'?api_key='+apiKey+'&language=ru';
+let requestURL = 'https://api.themoviedb.org/3/collection/'+collectionId+'?api_key='+apiKey+'&language=ru-RU';
+
 return requestURL;
 }
 
@@ -57,8 +59,8 @@ trilogyCollectionHtml.classList.add('active')
 hideList( trilogyCollectionHtml, 0.99 , 1 ,collectionId,`развернуть список фильмов`,'скрыть список') 
 
 })
-// catch в случае ошибки
-.catch(error => console.log(error));
+
+.catch(error =>printError(trilogyCollectionHtml,error));
 }
 
 setTimeout(() => 

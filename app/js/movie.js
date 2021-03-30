@@ -51,7 +51,7 @@ createDataMovie(item)
 videoQuery(generateVideoUrl(movieId))
 
     })
-    .catch(error => console.log(error));
+    .catch(error =>printError(movieWrapper,error));
 }
 
 function videoQuery(url) 
@@ -81,7 +81,7 @@ function ActorsQuery(url)
 
     })
 
-    .catch(error => console.log(error));
+    .catch(error =>printError(movieCasts,error));
 }
 
 function createDataMovie(item) {

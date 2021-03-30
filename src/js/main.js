@@ -11,11 +11,22 @@ function sendRequest(url) {
 			return response.json()
 		}
 		else {
-			console.log('eror');
-			console.log(response.status);
-			// return response.json()
+			console.log('sendRequest eror status' + response.status );
 		}
 	})
+}
+
+function printError(htmlEl,error) 
+{
+
+htmlEl.innerHTML=
+
+`
+<h1 class='error'>Сервер не отвечает, попробуйте зайти позднее...</h1>
+
+`	
+;
+console.log(error);
 }
 
 // при вызове рендерим Html из масива  moviesArray в filmsListHtml
@@ -200,26 +211,6 @@ whatHide.forEach(item =>
 }}
 
 
-const goTopBtn = document.querySelector('.go-top-btn');
-
-goTopBtn.onclick = function goTop ()
-{
-	document.body.scrollTop = 0;
-	document.scrollingElement.scrollTop = 0;
-}
-
-window.onscroll = function () {
-	
-	if ( document.body.scrollTop > 500 || document.scrollingElement.scrollTop > 500 )
-	{
-		goTopBtn.style.display= 'block';
-	}
-	else
-	{
-		goTopBtn.style.display= 'none';
-	}
-}
-
 
 function createPreloader(htmlElement,id,show= true)
 {
@@ -257,7 +248,6 @@ else
 const preloader = document.querySelector(`.preloader-`+id+``)
 
 preloader.remove();
-
 
 }
 

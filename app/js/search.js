@@ -49,7 +49,7 @@ e.preventDefault();
 // url для fetch c данными из инпута
 function generateSearchUrl(inputValue) 
 {
-let requestURL = 'https://api.themoviedb.org/3/search/movie?api_key='+apiKey+'&language=ru&query='+inputValue+'';
+let requestURL = 'https://api.themoviedb.org/4/search/movie?api_key='+apiKey+'&language=ru&query='+inputValue+'';
 return requestURL;
 }
 // url для fetch c данными из инпута
@@ -82,19 +82,22 @@ moviesArray=moviesArray.concat(searchResult)
 
 searchResultList.classList.add('active')
 
-
+console.log('ok');
+createPreloader(filmsListHtml,'search',false);
 searchResultTitle.innerHTML = `Поиск по запросу :<span  class="search-form__results-value">`+inputValue+`</span><br>Результатов найдено :`+data.results.length+``;
-createPreloader(trilogyCollectionHtml,'search',false);
+
+
 })
 // catch в случае ошибки
-.catch(error => console.log(error));
+
+.catch(error =>printError(searchResultTitle,error));
 }
 
-if (localStorage.getItem ('searchResult').length > 0) 
+if (localStorage.length > 0) 
 {
 
 searchResult =  JSON.parse (localStorage.getItem ('searchResult'));
-console.log(searchResult);
+
 searchResultList.classList.add('active')
 
 addFilmsList(searchResult, searchResultList)

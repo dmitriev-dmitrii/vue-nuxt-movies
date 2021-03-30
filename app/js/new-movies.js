@@ -29,8 +29,7 @@ htmlList.classList.add('active')
 createPreloader(htmlList,pageNumber,false);
 })
 
-// catch в случае ошибки
-.catch(error => console.log(error));
+.catch(error =>printError(htmlList,error));
 }
 
 getMoreButton.addEventListener('click',getMoreMovies )
