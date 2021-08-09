@@ -1,5 +1,3 @@
-
-
 // при клике на ссылку фильма берем id и делаем запрос по id , рендерим страницу
 
 const movieWrapper = document.querySelector('.movie')
@@ -9,10 +7,8 @@ const movieId = JSON.parse(localStorage.getItem('movieId'));
 
 let actors;
 
-
 idQuery(generateIdUrl(movieId));
-ActorsQuery(generateActorsUrl(movieId))
-
+ActorsQuery(generateActorsUrl(movieId));
 
 function generateIdUrl(movieId) {
 
@@ -31,7 +27,6 @@ function generateActorsUrl(movieId)
   let requestURL = ' https://api.themoviedb.org/3/movie/' + movieId + '/credits?api_key=' + apiKey + '&language==ru-RU';
   return requestURL;
 }
-
 
 function idQuery(url)
 

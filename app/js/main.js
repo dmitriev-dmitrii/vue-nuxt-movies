@@ -11,55 +11,44 @@ function sendRequest(url) {
 			return response.json()
 		}
 		else {
-			console.log('sendRequest eror status' + response.status );
+			console.log('sendRequest eror status' + response.status);
 		}
 	})
 }
 
-function printError(htmlEl,error) 
-{
+function printError(htmlEl, error) {
 
-htmlEl.innerHTML=
-
-`
-<h1 class='error'>Сервер не отвечает, попробуйте зайти позднее...</h1>
-
-`	
-;
-console.log(error);
+	htmlEl.innerHTML =
+		`<h1 class='error'>Сервер не отвечает, попробуйте зайти позднее...</h1>`;
+	console.log(error);
 }
 
 // при вызове рендерим Html из масива  moviesArray в filmsListHtml
 
-function addFilmsList(moviesArray, filmsListHtml) 
-
-{
+function addFilmsList(moviesArray, filmsListHtml) {
 
 	moviesArray.forEach(item => {
 
-let	movieYear
+		let movieYear
 
-if (item.release_date !== undefined) 
-{
-	movieYear=item.release_date.substr(0, 4);
-} else 
-{
-	movieYear='';
-}
+		if (item.release_date !== undefined) {
+			movieYear = item.release_date.substr(0, 4);
+		} else {
+			movieYear = '';
+		}
 
-	filmsListHtml.insertAdjacentHTML("beforeend",
+		filmsListHtml.insertAdjacentHTML("beforeend",
 
-			`
-<a href="movie.html"  movie-id="`+ item.id + `" class="movie-item">
+			`<a href="movie.html"  movie-id="` + item.id + `" class="movie-item">
 <img class="movie-item__img" src="https://image.tmdb.org/t/p/w500`+ item.poster_path + `"  alt="` + item.title + `">
-		<h4 class="movie-item__title"> `+ item.title + `	 </h4>
+		<h4 class="movie-item__title"> `+ item.title + `</h4>
 		<p class="movie-item__year"> `+ movieYear + `</p>
-		<p class="movie-item__score">	 `+ item.vote_average + `</p>
-</a> 
-`
-	);
+		<p class="movie-item__score">`+ item.vote_average + `</p>
+</a> `
 
-});
+		);
+
+	});
 
 	movieHtmlItems = document.querySelectorAll('.movie-item')
 
@@ -99,8 +88,7 @@ function createModals() {
 	});
 
 
-	function openModal() 
-	{
+	function openModal() {
 		let modalName = this.getAttribute("openModalName");
 
 		let modalWrapper = document.querySelector(`[modalName="${modalName}"]`);
@@ -122,59 +110,55 @@ function createModals() {
 	}
 }
 
-function hideList(htmlList,HideCalculate =0.5, minValue=10 ,id=1 ,showTxt ='показать еще',hideTxt= 'скрыть') 
-{
+function hideList(htmlList, HideCalculate = 0.5, minValue = 10, id = 1, showTxt = 'показать еще', hideTxt = 'скрыть') {
 
-// hideList( abcList, 0.5 , 1 ,'superKnopka','показать что то' ,'скрыть что то') 
+	// hideList( abcList, 0.5 , 1 ,'superKnopka','показать что то' ,'скрыть что то') 
 
-// id должен быть уникальным  для чтобы кноки не путались в классах, и для кастомной стилизации 
-// showTxt\hideTxt = текст в кнопке
-// htmlList - родитель дочерних элементов 
-// HideCalculate - на сколько скрыть масив в % например 0.9  на 90%
-// minValue - от скольки дочерних елементов  кнопку , если дочерних элементов меншье кнопка не покажется
+	// id должен быть уникальным  для чтобы кноки не путались в классах, и для кастомной стилизации 
+	// showTxt\hideTxt = текст в кнопке
+	// htmlList - родитель дочерних элементов 
+	// HideCalculate - на сколько скрыть масив в % например 0.9  на 90%
+	// minValue - от скольки дочерних елементов  кнопку , если дочерних элементов меншье кнопка не покажется
 
-// Первые 4 праметра обязательны
-// общие стили прописаны в  hideList.scss
+	// Первые 4 праметра обязательны
+	// общие стили прописаны в  hideList.scss
 
-const listChilds =Array.from(htmlList.children)
-const listLength =listChilds.length;
+	const listChilds = Array.from(htmlList.children)
+	const listLength = listChilds.length;
 
-let hideItems;
-let  howMuchHide;
+	let hideItems;
+	let howMuchHide;
 
 
-switch (true) 
-{ 
-case listLength <= minValue :
-  howMuchHide = false;
-  hideItems = false;
-break;
+	switch (true) {
+		case listLength <= minValue:
+			howMuchHide = false;
+			hideItems = false;
+			break;
 
-default:
-htmlList.classList.add('hide-items__parent');
-howMuchHide = (Math.floor(listChilds.length  * HideCalculate));
-hideItems = listChilds.slice((-howMuchHide));
+		default:
+			htmlList.classList.add('hide-items__parent');
+			howMuchHide = (Math.floor(listChilds.length * HideCalculate));
+			hideItems = listChilds.slice((-howMuchHide));
 
-creatButton(hideItems)
+			creatButton(hideItems)
 
-}
+	}
 
-function creatButton(whatHide)
-{
+	function creatButton(whatHide) {
 
-whatHide.forEach(item => 
-{
-item.classList.add(`hide-items__child-hiden-`+id+``,'hide-items__child-visible');
-});
+		whatHide.forEach(item => {
+			item.classList.add(`hide-items__child-hiden-` + id + ``, 'hide-items__child-visible');
+		});
 
-htmlList.insertAdjacentHTML("beforeend", `
+		htmlList.insertAdjacentHTML("beforeend", `
 
 <div class='hide-items__btn-wrapper'>
-<button class='hide__show-`+id+` hide-items__show-items-btn button'>`+showTxt+`</button>
+<button class='hide__show-`+ id + ` hide-items__show-items-btn button'>` + showTxt + `</button>
 </div>
 <style>
 
-.hide-items__child-hiden-`+id+`
+.hide-items__child-hiden-`+ id + `
 {
 position: absolute;
 height:0;
@@ -189,39 +173,34 @@ user-select: none;
 `)
 
 
-const showMoreButton= document.querySelector(`.hide__show-`+id+``);
+		const showMoreButton = document.querySelector(`.hide__show-` + id + ``);
 
-showMoreButton.addEventListener('click',showItems);
+		showMoreButton.addEventListener('click', showItems);
 
-function showItems() 
-{
-whatHide.forEach(item => 
-    {
-    item.classList.toggle(`hide-items__child-hiden-`+id+``);
-	console.log(item.classList);
-    });
+		function showItems() {
+			whatHide.forEach(item => {
+				item.classList.toggle(`hide-items__child-hiden-` + id + ``);
+				console.log(item.classList);
+			});
 
-			if (showMoreButton.innerHTML === showTxt) 
-			{
+			if (showMoreButton.innerHTML === showTxt) {
 				showMoreButton.innerHTML = hideTxt;
 			} else {
 				showMoreButton.innerHTML = showTxt;
 			}
+		}
+	}
 }
-}}
 
 
 
-function createPreloader(htmlElement,id,show= true)
-{
+function createPreloader(htmlElement, id, show = true) {
 
+	if (show == true) {
 
-if ( show == true) 
-{
-
-	htmlElement.insertAdjacentHTML("beforeend",
-	`
-	<div class="preloader-wrapper preloader-`+id+` ">
+		htmlElement.insertAdjacentHTML("beforeend",
+			`
+	<div class="preloader-wrapper preloader-`+ id + ` ">
 	<div class="preloader-chase">
 	<div class="preloader-chase-dot"></div>
 	<div class="preloader-chase-dot"></div>
@@ -232,23 +211,46 @@ if ( show == true)
 	</div>
 	</div>
 	`
-	);
+		);
+		document.querySelector(`.preloader-` + id + ``).style = `display:block;`
+	}
+	else {
+		const preloader = document.querySelector(`.preloader-` + id + ``)
+		preloader.remove();
+	}
+}
 
+const likes = ["Alex", "Jacob", "Mark", "Max",'timur', 'leha'];
+const lf = (arr) => {
 
-document.querySelector(`.preloader-`+id+``).style=
-`
-display:block;
+	switch (arr.length) {
 
-`
-} 
-
-else 
-{
-
-const preloader = document.querySelector(`.preloader-`+id+``)
-
-preloader.remove();
+		case 0:
+			{
+				console.log('no one likes this');
+				break;
+			}
+		case 1:
+			{
+				console.log(`must be ${arr[0]} likes this`);
+				break;
+			}
+		case 2:
+			{
+				console.log(`must be ${arr[0]} and  ${arr[1]} likes this`);
+				break;
+			}
+		case 3:
+			{
+				console.log(`must be ${arr[0]}, ${arr[1]} and  ${arr[2]} likes this`);
+				break;
+			}
+		default: {
+			console.log(`must be ${arr[0]},${arr[1]} and ${arr.length - 2} likes this`);
+		}
+			break;
+	}
 
 }
 
-}
+lf(likes);

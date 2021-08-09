@@ -4,47 +4,38 @@ let topRatedHtml = document.querySelector('.top-rated__list');
 
 let getMoreButton = document.querySelector('.getmore__button');
 
-let curentGet =1
+let curentGet = 1;
 
-function generatetopRatedUrl(pageNumber) 
-{
-let requestURL = 'https://api.themoviedb.org/3/movie/top_rated?api_key='+apiKey+'&language=ru&page='+pageNumber+'';
+function generatetopRatedUrl(pageNumber) {
+	let requestURL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + apiKey + '&language=ru&page=' + pageNumber + '';
 
-return requestURL;
+	return requestURL;
 }
 
-function topRatedQuery(htmlList,pageNumber) 
+function topRatedQuery(htmlList, pageNumber) {
+	createPreloader(htmlList, pageNumber, true);
 
-{
-createPreloader(htmlList,pageNumber,true);
-sendRequest(generatetopRatedUrl(pageNumber))
-.then((data) => 
-{
+	sendRequest(generatetopRatedUrl(pageNumber))
+		.then((data) => {
 
-addFilmsList(data.results, htmlList)
-moviesArray=moviesArray.concat(data.results)
-htmlList.classList.add('active')
-createPreloader(htmlList,pageNumber,false);
-})
+			addFilmsList(data.results, htmlList)
+			moviesArray = moviesArray.concat(data.results)
+			htmlList.classList.add('active')
+			createPreloader(htmlList, pageNumber, false);
 
-.catch(error =>printError(htmlList,error));
+		})
+
+		.catch(error => printError(htmlList, error));
 }
 
-getMoreButton.addEventListener('click',getMoreMovies )
+getMoreButton.addEventListener('click', getMoreMovies);
 
-function getMoreMovies() 
-{
-topRatedQuery(topRatedHtml,curentGet) 
-
-
-	curentGet=curentGet+1;
+function getMoreMovies() {
+	
+	topRatedQuery(topRatedHtml, curentGet);
+	curentGet = curentGet + 1;
 
 }
 
-getMoreMovies(topRatedHtml,curentGet) 
-
-
-
-
-
+getMoreMovies(topRatedHtml, curentGet);
 
