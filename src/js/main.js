@@ -6,14 +6,14 @@ let movieHtmlItems;
 
 function sendRequest(url) {
 	return fetch(url).then(response => {
-
+		console.log(response);
 		if (response.ok) {
 			return response.json()
 		}
 		else {
 			console.log('sendRequest eror status' + response.status);
 		}
-	})
+	});
 }
 
 function printError(htmlEl, error) {
@@ -72,7 +72,6 @@ mobileMenu.onclick = function () {
 }
 
 
-
 function createModals() {
 	const openModalBtn = document.querySelectorAll(`[openModalName]`)
 	const closeModalBtn = document.querySelectorAll(`[closeModalName]`)
@@ -87,16 +86,14 @@ function createModals() {
 		e.addEventListener('click', closeModal)
 	});
 
-
 	function openModal() {
 		let modalName = this.getAttribute("openModalName");
-
 		let modalWrapper = document.querySelector(`[modalName="${modalName}"]`);
 		modalWrapper.classList.add('active');
 	}
 
-
 	function closeModal() {
+
 		let modalName = this.getAttribute("closeModalName");
 		let modalWrapper = document.querySelector(`[modalName="${modalName}"]`);
 		modalWrapper.classList.remove('active');
@@ -219,38 +216,3 @@ function createPreloader(htmlElement, id, show = true) {
 		preloader.remove();
 	}
 }
-
-const likes = ["Alex", "Jacob", "Mark", "Max",'timur', 'leha'];
-const lf = (arr) => {
-
-	switch (arr.length) {
-
-		case 0:
-			{
-				console.log('no one likes this');
-				break;
-			}
-		case 1:
-			{
-				console.log(`must be ${arr[0]} likes this`);
-				break;
-			}
-		case 2:
-			{
-				console.log(`must be ${arr[0]} and  ${arr[1]} likes this`);
-				break;
-			}
-		case 3:
-			{
-				console.log(`must be ${arr[0]}, ${arr[1]} and  ${arr[2]} likes this`);
-				break;
-			}
-		default: {
-			console.log(`must be ${arr[0]},${arr[1]} and ${arr.length - 2} likes this`);
-		}
-			break;
-	}
-
-}
-
-lf(likes);
