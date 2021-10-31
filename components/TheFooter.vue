@@ -1,0 +1,8 @@
+
+<template>
+  <footer class="border-t">
+      <div class="max-w-7xl m-auto p-2 sm:p-4">
+        footer
+      </div>
+  </footer>
+</template>
