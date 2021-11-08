@@ -5,7 +5,7 @@ export const state = () => ({
 
     person: {
         images: [],
-        knowFor:''
+        moviesList:''
     },
 
 })
@@ -23,9 +23,21 @@ export const mutations = {
     mutatePerson: (state, obj) => {
         Object.assign(state.person, obj);
     },
-    mutatePersonKnowFor: (state, data) => {
+    mutatePersonMoviesList: (state, data) => {
+
+        // data[0].sort(function (a, b) {
+        //     if (a.popularity < b.popularity) {
+        //     return 1;
+        //     }
+        //     if (a.popularity > b.popularity) {
+        //     return -1;
+        //     }
+        //     // a должно быть равным b
+        //     return 0;
+        // });
+
         const obj = {
-            knowFor: data
+            moviesList: data
         }
         Object.assign(state.person, obj);
         
@@ -36,7 +48,7 @@ export const mutations = {
 export const actions = {
 
     axiosPerson: async (context, personId) => {
-
+        
         const request = await axios.get(
             `${api.url}/person/${personId}?${api.key}&language=${context.rootState.language}&`
         );
@@ -48,7 +60,7 @@ export const actions = {
     },
 
 
-    axiosPersonKnowFor: async (context, personId) => {
+    axiosPersonMoviesList: async (context, personId) => {
 
         const request = await axios.get(
             `${api.url}/person/${personId}/movie_credits?${api.key}&language=${context.rootState.language}&`
@@ -56,7 +68,7 @@ export const actions = {
         if (request.status == 200) {
             // console.log( request.data);
             // console.log(context);
-            context.commit('mutatePersonKnowFor', request.data);
+            context.commit('mutatePersonMoviesList', request.data);
         }
     },
 

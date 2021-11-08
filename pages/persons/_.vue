@@ -3,13 +3,18 @@
 	<h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading ">
 		<span-ru-en ru="Популярные люди" en="Popular People"/>
 	</h1>
+	<p class="pt-2 ">
+		<span-ru-en ru="Этот список обновляется ежедневно" en="This list updates daily"/>
+	</p>
 
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
 
 		<article  v-for="person in persons" :key="person.id" class=" rounded-lg border flex flex-col justify-between shadow overflow-hidden">
 			<NuxtLink  :to="`/persons/person/${person.id}`">
 			<div class="flex justify-between">
-				<img :src="`https://image.tmdb.org/t/p/w235_and_h235_face/${person.profile_path}`" :alt="`${person.name}`" loading="lazy" class="object-center  object-cover  h-50 w-36 rounded-lg " >
+				<img :alt="`${person.name}`" loading="eager" class="object-center  object-cover  h-50 w-36 rounded-lg "
+				:srcset="`https://image.tmdb.org/t/p/original/${person.profile_path}`"
+				:src="`https://image.tmdb.org/t/p/w235_and_h235_face/${person.profile_path}`"  >
 				<div class="flex flex-col justify-between  p-2 ">
 					<h2 class="text-xl  font-bold  sm:text-right ">{{ splitFullName(person.name).firstName }} <br> {{splitFullName(person.name).lastName}} </h2>
 					<div class="rounded-full font-bold text-right text-sm "> 
