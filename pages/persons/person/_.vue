@@ -10,11 +10,11 @@
 
         <ul class="rounded-full self-start text-sm">
         <li class="mb-2">
-            <span-ru-en ru="Место рождения:" en="Place of birth" />
+            <span-ru-en class="font-semibold" ru="Место рождения :" en="Place of birth :" />
             {{ person.place_of_birth }}
         </li>
         <li class="mb-2">
-            <span-ru-en ru="Дата рождения:" en="Birthday" />
+            <span-ru-en class="font-semibold" ru="Дата рождения :" en="Birthday :" />
             {{ person.birthday }}
         </li>
 
@@ -28,7 +28,7 @@
     </div>
 
     <img
-        class=" object-center bject-cover shadow-md border o rounded-lg h-40 sm:h-52 md:h-80 "
+        class=" object-center bject-cover shadow-md border  rounded-lg h-40 sm:h-52 md:h-80 "
         :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${person.profile_path}`"
         :srcset="`https://image.tmdb.org/t/p/original/${person.profile_path}`"
         :alt="`${person.name}`"

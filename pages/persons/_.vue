@@ -36,6 +36,8 @@
 
 	</div>
 
+<Pagination   :totalPages="pagination" />
+
 </div>
 
 </template>
@@ -43,9 +45,11 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import Pagination from '@/components/Pagination.vue';
 
 
 export default {
+  components: { Pagination },
 
 
 methods:
@@ -67,6 +71,7 @@ return {firstName,lastName}
 		),
 		
 	},
+	
 validate ({route}) {
     // Must be a number
 	    const currentPage = route.params.pathMatch;

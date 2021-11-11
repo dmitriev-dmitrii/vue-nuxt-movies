@@ -59,7 +59,6 @@ export const actions = {
         }
     },
 
-
     axiosPersonMoviesList: async (context, personId) => {
 
         const request = await axios.get(
