@@ -1,7 +1,10 @@
 <template>
 
 <div >
-	<div class=" mb-6  flex  flex-col items-center justify-between md:flex-row-reverse ">
+	<div class=" mb-6  flex  flex-col items-center justify-between md:flex-row-reverse bg-cover bg-right-top bg-opacity-50 bg-no-repeat"
+	:style="`background:  url(https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.backdrop_path}) `"
+	>
+
 		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start ">
 			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4"> 
 				<span v-if="!!movie.name" >{{ movie.name }}</span>
@@ -42,12 +45,13 @@
 		</summary>
 		{{ movie.overview }}
     </details>
-<h1> cast {{!!movie.credits.cast}}</h1>
+
+<!-- <h1> cast {{!!movie.credits.cast}}</h1> -->
 <div class="pt-8" v-if="!!movie.credits.cast">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
 	<small-persons-list :personsList="movie.credits.cast"></small-persons-list>
 </div> 
-<h1>crew {{!!movie.credits.crew}}</h1>
+<!-- <h1>crew {{!!movie.credits.crew}}</h1> -->
 <div class="pt-8" v-if="!!movie.credits.crew">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Команда" en="Crew" /> </h3>
 	<small-persons-list :personsList="movie.credits.crew"></small-persons-list>
@@ -72,8 +76,10 @@ export default {
 		...mapGetters( 
 			{
 				movie:'movie/getMovie',
-			}
+			},
+
 		),
+
 	},
 
 
