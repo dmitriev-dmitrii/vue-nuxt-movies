@@ -9,7 +9,7 @@
 
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
 
-		<article  v-for="person in persons" :key="person.id" class=" rounded-lg border flex flex-col justify-between shadow overflow-hidden">
+		<article  v-for="person in persons" :key="person.id" class=" rounded-lg border border-gray flex flex-col justify-between shadow overflow-hidden ">
 			<NuxtLink  :to="`/persons/person/${person.id}`">
 			<div class="flex justify-between">
 				<img :alt="`${person.name}`" loading="eager" class="object-center  object-cover  h-50 w-36 rounded-lg "
@@ -36,6 +36,8 @@
 
 	</div>
 
+<Pagination   :totalPages="pagination" />
+
 </div>
 
 </template>
@@ -43,9 +45,11 @@
 <script>
 
 import { mapGetters } from 'vuex';
+import Pagination from '@/components/Pagination.vue';
 
 
 export default {
+  components: { Pagination },
 
 
 methods:
@@ -67,6 +71,7 @@ return {firstName,lastName}
 		),
 		
 	},
+	
 validate ({route}) {
     // Must be a number
 	    const currentPage = route.params.pathMatch;

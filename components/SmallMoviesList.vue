@@ -1,22 +1,22 @@
 
 <template>
 
-<div :class="{ 'my-white-shaddow' : applyScrollItems (moviesList.length )}" >
+<div  :class="{ 'my-white-shaddow' : applyScrollItems (moviesList.length )}" >
 
     <div  :class="{ 'overflow-x-auto grid grid-rows-1 grid-flow-col' : applyScrollItems (moviesList.length )}" >
 
-    	<NuxtLink :to="`/movies/${movie.id}`"
-      class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border overflow-hidden inline-block"
-      v-for="movie in moviesList" :key="movie.id">
+    <NuxtLink :to="`/movies/${movie.id}`"
+      class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block"
+      v-for="movie in moviesList" :key="generateItemKey (movie.credit_id , movie.id)">
 			<img loading="lazy" 
 			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`" 
       :srcset="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"
 			:alt="`${movie.title}`"
-			class="object-center object-cover h-64 w-full border-b "
+			class="object-center object-cover h-64 w-full border-b border-gray  "
 			/>
     	<h4 v-if="!!movie.name" :title="movie.name" class="font-medium  truncate text-center p-1"> {{ movie.name }}</h4>
       <h4 v-else :title="movie.title" class="font-medium  truncate text-center p-1" > {{ movie.title }} </h4>
-
+      <h4 v-if="!!movie.job" :title="movie.job" class="font-medium  truncate text-center p-1 text-green"> {{ movie.job }}</h4>
 		</NuxtLink>
 
     </div>
@@ -35,7 +35,12 @@ if ( arrLength > 7 ) {
   } else {
     return  false
   }
+},
+
+generateItemKey:function( someNumber , id ) {
+return someNumber + id
 }
+
 },
 
     props: {

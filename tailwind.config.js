@@ -7,8 +7,27 @@ module.exports = {
 			'lg': '991.98px',
 			'xl': '1199.98px',
 			'2xl': '1399.98px',
+		},
+		colors: {
+			green: {
+				// light: '#85d7ff',
+				DEFAULT: '#00DC82',
+				// dark: '#009eeb',
+			},
+			white: {
+				// light: '#85d7ff',
+				DEFAULT: '#ffff',
+				// dark: '#009eeb',
+			},
+			gray: {
+				// light: '#85d7ff',
+				DEFAULT: '#80808033',
+				// dark: '#009eeb',
+			},
 		}
 	},
+
+	
 	plugins: [
 	require('@tailwindcss/forms'),
 	],

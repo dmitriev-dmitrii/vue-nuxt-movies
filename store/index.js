@@ -1,6 +1,6 @@
 
 export const state = () => ({
-	language:'ru',
+	language:'en',
 })
 
 export const getters = {

@@ -1,35 +1,62 @@
 <template>
-<div class="w-full" style="content-visibility:auto;">
-	<h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading ">
-		<span-ru-en ru="Популярные люди" en="Popular People"/>
-	</h1>
 
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
+<div >
+	<div class=" mb-6  flex  flex-col items-center justify-between md:flex-row-reverse bg-cover bg-right-top bg-opacity-50 bg-no-repeat"
+	:style="`background:  url(https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.backdrop_path}) `"
+	>
 
-		<article  v-for="person in persons" :key="person.id" class=" rounded-lg border flex flex-col justify-between shadow overflow-hidden">
-			<NuxtLink  :to="`/persons/person/${person.id}`">
-			<div class="flex justify-between">
-				<img :src="`https://image.tmdb.org/t/p/w235_and_h235_face/${person.profile_path}`" :alt="`${person.name}`" loading="lazy" class="object-center  object-cover  h-50 w-36 rounded-lg " >
-				<div class="flex flex-col justify-between  p-2 ">
-					<h2 class="text-xl  font-bold  sm:text-right ">{{ splitFullName(person.name).firstName }} <br> {{splitFullName(person.name).lastName}} </h2>
-					<div class="rounded-full font-bold text-right text-sm "> 
-						<span-ru-en ru="Рейтинг" en="Popularity"/>{{ person.popularity }}
-					</div>
-				</div>
+		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start ">
+			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4"> 
+				<span v-if="!!movie.name" >{{ movie.name }}</span>
+				<span v-else > {{ movie.title }}</span>
+			</h1>
 
-			</div>
-
-				<ul class="p-2 text-sm ">
-					<li v-for="movie in person.known_for" :key=movie.id class="truncate " >
-						<p v-if="!!movie.name" :title="movie.name">{{movie.name}}</p>
-						<p v-else :title="movie.title">{{movie.title}}</p>
-					</li>
-				</ul>
+			<h2  class="text-lg font-bold mb-4"><span-ru-en ru=' О фильме :' en =' About Movie :'/> </h2>
 			
-			</NuxtLink>
-		</article>
+			<ul>
+				<h3 class="font-medium"><span-ru-en ru='Жанры:' en ='Genres :'/></h3>
+				<li v-for="genre in movie.genres" :key=genre.id class="ml-2">
+					{{genre.name}}
+				</li>
+				
+				<li class="mb-2"><span-ru-en class="font-medium" ru='Оригинальное название:' en ='Original Name:'/> {{movie.original_title}}</li>
+				<li class="mb-2"><span-ru-en class="font-medium" ru='Оценка Пользователей:' en ='Vote Average:'/>{{ movie.vote_average }}</li>
+				<li class="mb-2"><span-ru-en class="font-medium" ru='Язык Оригинала:' en ='Original Language:'/> {{movie.original_language}}</li>
+				<li class="mb-2"><span-ru-en class="font-medium" ru='Статус:' en ='Status:'/> {{movie.status}}</li>
+				<li class="mb-2"><span-ru-en class="font-medium" ru='Дата релиза:' en ='Release Date:'/> {{movie.release_date}}</li>
+				<li class="mb-2" v-if="!!movie.belongs_to_collection"><span-ru-en class="font-medium" ru='Входит в коллекцию:' en ='Collection:'/><NuxtLink class="border-b border-green" :to="`/collection/${movie.belongs_to_collection.id}`">{{movie.belongs_to_collection.name}}</NuxtLink></li>
+			</ul>
 
+
+
+		</div>
+			<img  
+			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`" 
+			:srcset="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"
+			:alt="`${movie.title}`"
+			class="object-center object-cover border-b border-gray rounded-lg max-w-xs shadow-md"/>
 	</div>
+
+<!-- <small-movies-list :moviesList="movie.belongs_to_collection"/> -->
+
+	<details v-if="movie.overview" class="mt-4 mb-4 text-sm">
+		<summary>
+        <span-ru-en ru="Описание" en="Overview" />
+		</summary>
+		{{ movie.overview }}
+    </details>
+
+<!-- <h1> cast {{!!movie.credits.cast}}</h1> -->
+<div class="pt-8" v-if="!!movie.credits.cast">
+    <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
+	<small-persons-list :personsList="movie.credits.cast"></small-persons-list>
+</div> 
+<!-- <h1>crew {{!!movie.credits.crew}}</h1> -->
+<div class="pt-8" v-if="!!movie.credits.crew">
+    <h3  class="font-medium  text-md "> <span-ru-en ru="Команда" en="Crew" /> </h3>
+	<small-persons-list :personsList="movie.credits.crew"></small-persons-list>
+</div> 
+
 
 </div>
 
@@ -38,30 +65,24 @@
 <script>
 
 import { mapGetters } from 'vuex';
-
+import SmallMoviesList from '../../components/SmallMoviesList.vue';
+import SmallPersonsList from '../../components/SmallPersonsList.vue';
+import SpanRuEn from '../../components/SpanRu-En.vue';
 
 export default {
+  components: { SpanRuEn, SmallMoviesList, SmallPersonsList },
 
-
-methods:
-{
-splitFullName: (name)=>{
-
-let [firstName,  ...lastName] = name.split(" ");
-lastName=lastName.join(' ');
-return {firstName,lastName}
-},
-
-},
 	computed : {
 		...mapGetters( 
 			{
-				persons:'persons/getPersons',
-				pagination:'persons/getPagination',
-			}
+				movie:'movie/getMovie',
+			},
+
 		),
-		
+
 	},
+
+
 validate ({route}) {
     // Must be a number
 	    const currentPage = route.params.pathMatch;
@@ -71,8 +92,13 @@ validate ({route}) {
     },
 
 	async fetch (context) {
-        await context.store.dispatch('persons/axiosPersons', context.route.params.pathMatch )
+        await context.store.dispatch('movie/axiosMovie',context.route.params.pathMatch )
+		await context.store.dispatch('movie/axiosMovieCredits',context.route.params.pathMatch )
 	},
 }
 </script>
 
+<style >
+
+
+</style>

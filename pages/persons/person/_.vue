@@ -3,32 +3,30 @@
     <div class="flex sm:flex-row-reverse sm:justify-end sm:flex-nowrap mb-4">
     <div class="flex flex-col self-start w-full pr-2 sm:p-4 sm:pt-0">
         <h1
-        class=" font-bold text-2xl md:text-2xl lg:text-6xl font-heading mb-2 lg:mb-6 ">
+        class=" font-bold text-2xl md:text-2xl lg:text-6xl font-heading mb-2 lg:mb-4 ">
         {{ person.name }}
         </h1>
-        <!-- <h2>{{ person.known_for_department }}</h2> -->
+        <h2 class="mb-2 font-semibold">{{ person.known_for_department }}</h2>
 
         <ul class="rounded-full self-start text-sm">
         <li class="mb-2">
-            <span-ru-en ru="Место рождения:" en="Place of birth" />
+            <span-ru-en class="font-semibold" ru="Место рождения :" en="Place of birth :" />
             {{ person.place_of_birth }}
         </li>
         <li class="mb-2">
-            <span-ru-en ru="Дата рождения:" en="Birthday" />
+            <span-ru-en class="font-semibold" ru="Дата рождения :" en="Birthday :" />
             {{ person.birthday }}
         </li>
-
-        <!-- <li class="mb-2">
-            <span-ru-en ru="Всего работ:" en="Total Movies:" />
-            {{ person.moviesList[0].length }}
-        </li> -->
-
-		
+        <li class="mb-2">
+            <span-ru-en class="font-semibold" ru="Основная деятельность :" en="Department :" />
+           	{{ person.known_for_department }}
+        </li>
+	
         </ul>
     </div>
 
     <img
-        class=" object-center bject-cover shadow-md border o rounded-lg h-40 sm:h-52 md:h-80 "
+        class=" object-center bject-cover shadow-md border  border-gray rounded-lg h-40 sm:h-52 md:h-80 "
         :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${person.profile_path}`"
         :srcset="`https://image.tmdb.org/t/p/original/${person.profile_path}`"
         :alt="`${person.name}`"
@@ -44,12 +42,12 @@
     </details>
     
 <div class="pt-8" v-if="person.moviesList.cast.length > 0">
-    <h3  class="font-medium  text-md ">  <span-ru-en ru="Список Работ" en="Works list " /> </h3>
+    <h3  class="font-medium  text-md ">  <span-ru-en ru="Известные Работы" en="Known For " /> </h3>
     <small-movies-list   :moviesList="person.moviesList.cast" />
 </div>
 
 <div class="pt-8" v-if="person.moviesList.crew.length > 0">
-    <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрское искусство" en="Acting" /> </h3>
+    <h3  class="font-medium  text-md "> {{ person.known_for_department }} </h3>
     <small-movies-list  :moviesList="person.moviesList.crew" />
 </div> 
 
@@ -59,7 +57,6 @@
 <script>
 import { mapGetters } from "vuex";
 import SpanRuEn from "@/components/SpanRu-En.vue";
-
 
 
 export default {
