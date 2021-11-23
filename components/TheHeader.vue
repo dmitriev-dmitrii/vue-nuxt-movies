@@ -1,6 +1,6 @@
 
 <template>
-<header class="border-b">
+<header class="border-b border-gray">
   <div class="max-w-7xl m-auto p-2 sm:p-4">
     <NuxtLink to="/" class="flex items-center">
         Nuxt-Movies
@@ -15,25 +15,12 @@
           movies
           </NuxtLink>
         </li>
-          <li :class=navLiStyles >
-          <NuxtLink to="/serials" >
-          serials
-          </NuxtLink>
-        </li>
         <li :class=navLiStyles  >
           <NuxtLink to="/persons/" >
           persons
           </NuxtLink>
         </li>
-        <li :class=navLiStyles >
-          <NuxtLink to="/login" >
-          login
-          </NuxtLink>
-        </li>
 
-        <li :class=navLiStyles >
-          EN/RU
-        </li>
 
       </ul>
     </nav>
@@ -53,3 +40,8 @@ data:  () =>{
   },
 }
 </script>
+
+<style>
+
+
+</style>

@@ -23,18 +23,19 @@ export const mutations = {
     mutatePerson: (state, obj) => {
         Object.assign(state.person, obj);
     },
+
     mutatePersonMoviesList: (state, data) => {
 
-        // data[0].sort(function (a, b) {
-        //     if (a.popularity < b.popularity) {
-        //     return 1;
-        //     }
-        //     if (a.popularity > b.popularity) {
-        //     return -1;
-        //     }
-        //     // a должно быть равным b
-        //     return 0;
-        // });
+        data.cast.sort(function (a, b) {
+            if (a.popularity < b.popularity) {
+            return 1;
+            }
+            if (a.popularity > b.popularity) {
+            return -1;
+            }
+            // a должно быть равным b
+            return 0;
+        });
 
         const obj = {
             moviesList: data

@@ -2,45 +2,38 @@ import axios from 'axios';
 import api from "@/api/api";
 
 export const state = () => ({
-	persons: [],
-    pagination:0
-})
+	movies: [],
+    moviesType: 'popular',
+});
 
 export const getters = {
-
-getPersons: (state)=>{
-
-	return state.persons;
+getMovies: (state)=>{
+	return state.movies;
 },
-getPagination: (state)=>{
-	return state.pagination;
+getMoviesType: (state)=>{
+	return state.moviesType;
 },
-
-}
+};
 
 export const mutations = {
+    mutateMovies: (state, array) => {
+		state.movies =  array;
+	},
 
-    mutatePersons: (state, array) => {
-		state.persons =  array;
+    mutateMoviesType: (state, value) => {
+		state.moviesType =  value;
 	},
-    mutatePersonsPagination: (state, value) => {
-		state.pagination =  value;
-	},
-    
-}
+
+};
 
 export const actions = {
 
-    axiosPersons: async (context,pageNumber) => {
-
+    axiosMovies: async (context,indexOfPartLoading) => {
     const request = await axios.get(
-        `${api.url}/person/popular?${api.key}&language=${context.rootState.language}&page=${pageNumber}`
+        `${api.url}/movie/${context.state.moviesType}?${api.key}&language=${context.rootState.language}&page=${indexOfPartLoading}`
     );
     if (request.status == 200) {
-
-        context.commit('mutatePersons', request.data.results );
-        context.commit('mutatePersonsPagination', request.data.total_pages );
-
+        context.commit('mutateMovies', request.data.results );
     }
-    },
-}
+},
+};

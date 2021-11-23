@@ -2,63 +2,43 @@ import axios from 'axios';
 import api from "@/api/api";
 
 export const state = () => ({
-
-    person: {
-        images: [],
-        knowFor:''
-    },
-
-})
+    movie:{},
+});
 
 export const getters = {
+getMovie: (state)=>{
+	return state.movie;
+},
 
-    getPerson: (state) => {
-        return state.person;
-    },
-
-}
+};
 
 export const mutations = {
+    mutateMovie: (state, obj) => {
+		state.movie =  obj;
+	},
 
-    mutatePerson: (state, obj) => {
-        Object.assign(state.person, obj);
-    },
-    mutatePersonKnowFor: (state, data) => {
-        const obj = {
-            knowFor: data
-        }
-        Object.assign(state.person, obj);
-        
-    },
-    
-}
+    mutateMovieCredits: (state, arr) => {
+        state.movie.credits = arr;
+	},
+};
 
 export const actions = {
 
-    axiosPerson: async (context, personId) => {
+    axiosMovie: async (context,movieId) => {
+    const request = await axios.get(
+        `${api.url}/movie/${movieId}?${api.key}&language=${context.rootState.language}`
+    );
+    if (request.status == 200) {
+        context.commit('mutateMovie', request.data );
+    }
+},
+axiosMovieCredits: async (context,movieId) => {
+    const request = await axios.get(
+        `${api.url}/movie/${movieId}/credits?${api.key}&language=${context.rootState.language}`
+    );
+    if (request.status == 200) {
+        context.commit('mutateMovieCredits', request.data );
+    }
+},
 
-        const request = await axios.get(
-            `${api.url}/person/${personId}?${api.key}&language=${context.rootState.language}&`
-        );
-        if (request.status == 200) {
-            // console.log( request.data);
-            // console.log(context);
-            context.commit('mutatePerson', request.data);
-        }
-    },
-
-
-    axiosPersonKnowFor: async (context, personId) => {
-
-        const request = await axios.get(
-            `${api.url}/person/${personId}/movie_credits?${api.key}&language=${context.rootState.language}&`
-        );
-        if (request.status == 200) {
-            // console.log( request.data);
-            // console.log(context);
-            context.commit('mutatePersonKnowFor', request.data);
-        }
-    },
-
-
-}
+};

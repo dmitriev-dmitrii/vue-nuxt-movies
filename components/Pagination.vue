@@ -13,7 +13,7 @@
         {{ Number(currentPage)-1 }}
     </NuxtLink>
 
-    <div :class="paginationStyles" class="cursor-not-allowed font-bold shadow-md ring-inset ring-2">
+    <div :class="paginationStyles" class="cursor-not-allowed font-bold shadow-md ring-inset ring-2 ring-green border-green">
         {{ currentPage }}
     </div>
 
