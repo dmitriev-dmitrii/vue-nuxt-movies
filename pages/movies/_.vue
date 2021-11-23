@@ -1,12 +1,26 @@
 <template>
 
 <div >
-	<div class=" mb-6  flex  flex-col items-center justify-between md:flex-row-reverse bg-cover bg-right-top bg-opacity-50 bg-no-repeat"
-	:style="`background:  url(https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.backdrop_path}) `"
+	<div class=" rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10"
 	>
+<div class="my-bg rounded-lg overflow-hidden  hidden xl:block"
+:style="`
+background: linear-gradient(to right ,rgba(255, 255, 255, 1)40% , rgba(255, 255, 255, 0.9)45%,  rgba(255, 255, 255, 0.0)60% ), no-repeat  url(https://image.tmdb.org//t/p/original//${movie.backdrop_path}) ;
+position: absolute;
+width: 100%;
+height: 100%;
+left: 0;
 
-		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start ">
-			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4"> 
+top: 0;
+z-index: -1;
+background-size: auto 100% ;
+background-position: 120% 100% ;
+`"
+></div>
+
+		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
+			
+			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 max-w-xs"> 
 				<span v-if="!!movie.name" >{{ movie.name }}</span>
 				<span v-else > {{ movie.title }}</span>
 			</h1>
@@ -14,20 +28,18 @@
 			<h2  class="text-lg font-bold mb-4"><span-ru-en ru=' О фильме :' en =' About Movie :'/> </h2>
 			
 			<ul>
-				<h3 class="font-medium"><span-ru-en ru='Жанры:' en ='Genres :'/></h3>
+				<h3 class="font-medium "><span-ru-en ru='Жанры:' en ='Genres :'/></h3>
 				<li v-for="genre in movie.genres" :key=genre.id class="ml-2">
 					{{genre.name}}
 				</li>
 				
-				<li class="mb-2"><span-ru-en class="font-medium" ru='Оригинальное название:' en ='Original Name:'/> {{movie.original_title}}</li>
+				<li class="mb-2 max-w-xs"><span-ru-en class="font-medium" ru='Оригинальное название:' en ='Original Name:'/> {{movie.original_title}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Оценка Пользователей:' en ='Vote Average:'/>{{ movie.vote_average }}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Язык Оригинала:' en ='Original Language:'/> {{movie.original_language}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Статус:' en ='Status:'/> {{movie.status}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Дата релиза:' en ='Release Date:'/> {{movie.release_date}}</li>
 				<li class="mb-2" v-if="!!movie.belongs_to_collection"><span-ru-en class="font-medium" ru='Входит в коллекцию:' en ='Collection:'/><NuxtLink class="border-b border-green" :to="`/collection/${movie.belongs_to_collection.id}`">{{movie.belongs_to_collection.name}}</NuxtLink></li>
 			</ul>
-
-
 
 		</div>
 			<img  
@@ -37,8 +49,6 @@
 			class="object-center object-cover border-b border-gray rounded-lg max-w-xs shadow-md"/>
 	</div>
 
-<!-- <small-movies-list :moviesList="movie.belongs_to_collection"/> -->
-
 	<details v-if="movie.overview" class="mt-4 mb-4 text-sm">
 		<summary>
         <span-ru-en ru="Описание" en="Overview" />
@@ -46,12 +56,12 @@
 		{{ movie.overview }}
     </details>
 
-<!-- <h1> cast {{!!movie.credits.cast}}</h1> -->
+<h1> cast {{!!movie.credits.cast}}</h1> -->
 <div class="pt-8" v-if="!!movie.credits.cast">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
 	<small-persons-list :personsList="movie.credits.cast"></small-persons-list>
 </div> 
-<!-- <h1>crew {{!!movie.credits.crew}}</h1> -->
+<h1>crew {{!!movie.credits.crew}}</h1>
 <div class="pt-8" v-if="!!movie.credits.crew">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Команда" en="Crew" /> </h3>
 	<small-persons-list :personsList="movie.credits.crew"></small-persons-list>
@@ -65,9 +75,9 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import SmallMoviesList from '../../components/SmallMoviesList.vue';
-import SmallPersonsList from '../../components/SmallPersonsList.vue';
-import SpanRuEn from '../../components/SpanRu-En.vue';
+import SmallMoviesList from '@/components/SmallMoviesList.vue';
+import SmallPersonsList from '@/components/SmallPersonsList.vue';
+import SpanRuEn from '@/components/SpanRu-En.vue';
 
 export default {
   components: { SpanRuEn, SmallMoviesList, SmallPersonsList },
@@ -100,5 +110,41 @@ validate ({route}) {
 
 <style >
 
+.my-bg{ 
+
+/* background: no-repeat  url("@/static/123.jpg") ;
+
+position: absolute;
+width: 100%;
+height: 100%;
+
+left: 0;
+top: 0;
+z-index: -1;
+
+background-size: auto 100% ;
+background-position: right; */
+
+
+
+animation: my-bg-slide 1.5s   ;
+
+}
+@keyframes my-bg-slide {
+0% {
+transform: translateX(-100%) ;
+opacity: 0;
+
+}
+90%  {
+    transform: translateX(15%) scale(.8) ;
+	opacity: .5;
+	/* filter: blur(5px) */
+}
+100%  {
+    transform: translateX(0%) ;
+}
+
+}
 
 </style>

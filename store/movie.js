@@ -2,7 +2,9 @@ import axios from 'axios';
 import api from "@/api/api";
 
 export const state = () => ({
-    movie:{},
+    movie:{
+        credits:''
+    },
 });
 
 export const getters = {
@@ -17,8 +19,8 @@ export const mutations = {
 		state.movie =  obj;
 	},
 
-    mutateMovieCredits: (state, arr) => {
-        state.movie.credits = arr;
+    mutateMovieCredits: (state, obj) => {
+        state.movie.credits = obj;
 	},
 };
 
