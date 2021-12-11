@@ -3,7 +3,8 @@ import api from "@/api/api";
 
 export const state = () => ({
     movie:{
-        credits:''
+        credits:'',
+        videos:[]
     },
 });
 
@@ -21,6 +22,9 @@ export const mutations = {
 
     mutateMovieCredits: (state, obj) => {
         state.movie.credits = obj;
+	},
+    mutateMovieVideos: (state, arr) => {
+        state.movie.videos = arr;
 	},
 };
 
@@ -42,5 +46,13 @@ axiosMovieCredits: async (context,movieId) => {
         context.commit('mutateMovieCredits', request.data );
     }
 },
-
+axiosMovieVideos: async (context,movieId) => {
+    const request = await axios.get(
+        `${api.url}/movie/${movieId}/videos?${api.key}&language=${context.rootState.language}`
+        
+    );
+    if (request.status == 200) {
+        context.commit('mutateMovieVideos', request.data.results);
+    }
+},
 };

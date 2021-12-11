@@ -14,13 +14,13 @@ left: 0;
 top: 0;
 z-index: -1;
 background-size: auto 100% ;
-background-position: 120% 100% ;
+background-position: 100% 100% ;
 `"
 ></div>
 
 		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
 			
-			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 max-w-xs"> 
+			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs"> 
 				<span v-if="!!movie.name" >{{ movie.name }}</span>
 				<span v-else > {{ movie.title }}</span>
 			</h1>
@@ -33,7 +33,6 @@ background-position: 120% 100% ;
 					{{genre.name}}
 				</li>
 				
-				<li class="mb-2 max-w-xs"><span-ru-en class="font-medium" ru='Оригинальное название:' en ='Original Name:'/> {{movie.original_title}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Оценка Пользователей:' en ='Vote Average:'/>{{ movie.vote_average }}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Язык Оригинала:' en ='Original Language:'/> {{movie.original_language}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Статус:' en ='Status:'/> {{movie.status}}</li>
@@ -48,6 +47,12 @@ background-position: 120% 100% ;
 			:alt="`${movie.title}`"
 			class="object-center object-cover border-b border-gray rounded-lg max-w-xs shadow-md"/>
 	</div>
+
+<iframe id="ytplayer" type="text/html" width="640" height="360"
+  :src="`http://www.youtube.com/embed/${movie.videos[0].key}`"
+  frameborder="0"/>
+
+
 
 	<details v-if="movie.overview" class="mt-4 mb-4 text-sm">
 		<summary>
@@ -104,7 +109,13 @@ validate ({route}) {
 	async fetch (context) {
         await context.store.dispatch('movie/axiosMovie',context.route.params.pathMatch )
 		await context.store.dispatch('movie/axiosMovieCredits',context.route.params.pathMatch )
+		await context.store.dispatch('movie/axiosMovieVideos',context.route.params.pathMatch )
 	},
+
+	// async data (context) {
+	// 	await context.store.dispatch('movie/axiosMovieVideos',context.route.params.pathMatch )
+	// },
+
 }
 </script>
 
@@ -125,24 +136,21 @@ z-index: -1;
 background-size: auto 100% ;
 background-position: right; */
 
-
-
-animation: my-bg-slide 1.5s   ;
+animation: my-bg-slide 2s  ;
 
 }
 @keyframes my-bg-slide {
 0% {
 transform: translateX(-100%) ;
 opacity: 0;
-
 }
-90%  {
-    transform: translateX(15%) scale(.8) ;
-	opacity: .5;
-	/* filter: blur(5px) */
+60%  {
+	transform: translateX(0%) ;
+	opacity: .3;
 }
 100%  {
-    transform: translateX(0%) ;
+    
+	opacity: 1;
 }
 
 }
