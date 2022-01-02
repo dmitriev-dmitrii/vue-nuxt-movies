@@ -67,7 +67,7 @@ defalutUrl(){ return  `${ this.$route.path}`.replace(/[0-9]/g,'') }
 
 },
 
-  methods: {// добавим функций на страницу
+  methods: {
 
     pageBack:function(){
       this.$router.push({ path: `${this.defalutUrl}${Number(this.currentPage) - 1}`})

@@ -49,8 +49,7 @@ import Pagination from '@/components/Pagination.vue';
 
 
 export default {
-  components: { Pagination },
-
+components: { Pagination },
 
 methods:
 {

@@ -2,9 +2,8 @@ import axios from 'axios';
 import api from "@/api/api";
 
 export const state = () => ({
-	
+	loadingMovieCard:false,
     currentMoviesType: 'popular',
-
     moviesTypes: [
         {
             name:'popular',
@@ -32,6 +31,9 @@ export const state = () => ({
 
 export const getters = {
 
+    getMovieCardIsLoading: (state)=>{
+        return state.loadingMovieCard;
+},
 getCurrentMoviesType: (state)=>{
 	return state.currentMoviesType;
 },
@@ -49,18 +51,20 @@ export const mutations = {
         },
 
     mutateMoviesData: (state,  payload ) => {
-    console.log(payload.index);
+    // console.log(payload.index);
     const currentStateObj =  state.moviesTypes[ payload.index ]
     currentStateObj.moviesList = currentStateObj.moviesList.concat(payload.data);
     currentStateObj.pagesLoadedCounter++
 	},
-
+    mutateLoadingMovieCard: (state , value=false ) => {
+        state.loadingMovieCard = value
+        }
 };
 
 export const actions = {
 
     axiosMovies: async (context, movieTypeIndex=0 ) => {
-    
+    context.commit('mutateLoadingMovieCard', true );
     const currentStateObj  = context.state.moviesTypes[ movieTypeIndex ];
     const request = await axios.get(
         `${api.url}/movie/${currentStateObj .name}?${api.key}&language=${context.rootState.language}&page=${currentStateObj .pagesLoadedCounter}`
@@ -70,6 +74,7 @@ export const actions = {
             index:movieTypeIndex,
             data: request.data.results
     }
+    context.commit('mutateLoadingMovieCard', false );
         context.commit('mutateMoviesData',  payload);
     }
 },

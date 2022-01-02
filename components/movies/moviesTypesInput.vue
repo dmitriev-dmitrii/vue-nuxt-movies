@@ -2,7 +2,7 @@
 <template>
 
 <div>
-	<input class="hidden" name="moviesTypes" type="radio" :id="movieType" :value="movieType" @input="updateMoviesType">
+	<input class="hidden" :checked="currentMoviesType == movieType" name="moviesTypes" type="radio"  :id="movieType" :value="movieType" @input="updateMoviesType">
   <label :for="movieType" class="px-2 py-1  mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium"> 
     {{ viewMovieType (movieType) | capitalize }}
 	</label>
@@ -11,12 +11,17 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex';
 export default {
 
-  computed: { 
+	computed : {
+		...mapGetters( 
+			{
+				currentMoviesType:'movies/getCurrentMoviesType',
+			}
+		),
+	},
 
-},
 props: {
     movieType: {
     type: String,
