@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "nuxt --open",
-    "start": "nuxt build && nuxt start",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "heroku-postbuild": "nuxt build",
     "generate": "nuxt generate"
   },
   "dependencies": {
