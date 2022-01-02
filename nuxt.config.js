@@ -22,12 +22,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '@/plugins/a.js' },
-
-    // { src: '~/plugins/client-only.js', mode: 'client' }, // only on client side
-    // { src: '~/plugins/server-only.js', mode: 'server' } // only on server side
-  ],
+  plugins: ['@plugins/filters.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

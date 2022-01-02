@@ -1,8 +1,7 @@
 <template>
 
 <div >
-	<div class=" rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10"
-	>
+	<div class=" rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10">
 <div class="my-bg rounded-lg overflow-hidden  hidden xl:block"
 :style="`
 background: linear-gradient(to right ,rgba(255, 255, 255, 1)40% , rgba(255, 255, 255, 0.9)45%,  rgba(255, 255, 255, 0.0)60% ), no-repeat  url(https://image.tmdb.org//t/p/original//${movie.backdrop_path}) ;
@@ -15,8 +14,8 @@ top: 0;
 z-index: -1;
 background-size: auto 100% ;
 background-position: 100% 100% ;
-`"
-></div>
+`">
+</div>
 
 		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
 			
@@ -49,9 +48,8 @@ background-position: 100% 100% ;
 	</div>
 
 <iframe id="ytplayer" type="text/html" width="640" height="360"
-  :src="`http://www.youtube.com/embed/${movie.videos[0].key}`"
-  frameborder="0"/>
-
+	:src="`http://www.youtube.com/embed/${movie.videos[0].key}`"
+	frameborder="0"/>
 
 
 	<details v-if="movie.overview" class="mt-4 mb-4 text-sm">

@@ -19,7 +19,7 @@
         </li>
         <li class="mb-2">
             <span-ru-en class="font-semibold" ru="Основная деятельность :" en="Department :" />
-           	{{ person.known_for_department }}
+            {{ person.known_for_department }}
         </li>
 	
         </ul>
