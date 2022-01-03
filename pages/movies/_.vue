@@ -47,15 +47,14 @@ background-position: 100% 100% ;
 			class="object-center object-cover border-b border-gray rounded-lg max-w-lg shadow-md"/>
 	</div>
 
-<!-- <movieVideo /> -->
+<movieVideo :id='movie.id' />
 
-	<details v-if="movie.overview" class="shadow-md border border-gray rounded-lg max-w-lg ">
-		<summary class="shadow-md  border  border-white hover:border-green rounded-lg">
 
-        <span-ru-en ru="Описание" en="Overview" />
-		</summary>
-		{{ movie.overview }}
-    </details>
+
+<detailsTag>
+	<span-ru-en slot="summary" ru="Описание" en="Overview" />
+	{{ movie.overview }}
+</detailsTag>
 
 <div class="pt-8" v-if="!!movie.credits.cast">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
@@ -78,10 +77,11 @@ import { mapGetters } from 'vuex';
 import SmallMoviesList from '@/components/SmallMoviesList.vue';
 import SmallPersonsList from '@/components/SmallPersonsList.vue';
 import SpanRuEn from '@/components/SpanRu-En.vue';
+import detailsTag from '@/components/detailsTag.vue';
 import movieVideo from '@/components/movies/movieVideo.vue';
 
 export default {
-components: { SpanRuEn, SmallMoviesList, SmallPersonsList ,movieVideo},
+components: { SpanRuEn, SmallMoviesList, SmallPersonsList ,movieVideo ,detailsTag},
 
 	computed : {
 		...mapGetters( 
@@ -103,8 +103,9 @@ validate ({route}) {
     },
 
 	async fetch (context) {
-        await context.store.dispatch('movie/axiosMovie',context.route.params.pathMatch )
-		await context.store.dispatch('movie/axiosMovieCredits',context.route.params.pathMatch )
+		const id = context.route.params.pathMatch 
+        await context.store.dispatch('movie/axiosMovie', id )
+		await context.store.dispatch('movie/axiosMovieCredits', id )
 	},
 
 
@@ -113,42 +114,8 @@ validate ({route}) {
 </script>
 
 <style >
-details {
-
-	margin: 1em 0;
-    padding: .5em ;
-}
-
-summary {
-	cursor: pointer;
-    margin: -.5em ;
-    padding: .5em;
-	transition: all 0.3s ease;
-}
-
-details[open] {
-    padding: .5em;
-}
-
-details[open] summary {
-    
-    margin-bottom: .5em;
-}
 
 .my-bg{ 
-
-/* background: no-repeat  url("@/static/123.jpg") ;
-
-position: absolute;
-width: 100%;
-height: 100%;
-
-left: 0;
-top: 0;
-z-index: -1;
-
-background-size: auto 100% ;
-background-position: right; */
 
 animation: my-bg-slide 2s  ;
 

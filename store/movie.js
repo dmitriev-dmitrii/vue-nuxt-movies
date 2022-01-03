@@ -12,7 +12,6 @@ export const getters = {
 getMovie: (state)=>{
 	return state.movie;
 },
-
 };
 
 export const mutations = {

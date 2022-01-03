@@ -34,12 +34,12 @@
       />
     </div>
 
-    <details v-if="!!person.biography" class="mt-4 mb-4 text-sm">
-      <summary>
-        <span-ru-en ru="Биография" en="Biography" />
-      </summary>
-      {{ person.biography }}
-    </details>
+<detailsTag  v-if="!!person.biography">
+	<span-ru-en slot="summary" ru="Биография" en="Biography" />
+	{{ person.biography }}
+</detailsTag>
+
+
     
 <div class="pt-8" v-if="person.moviesList.cast.length > 0">
     <h3  class="font-medium  text-md ">  <span-ru-en ru="Известные Работы" en="Known For " /> </h3>
@@ -57,10 +57,10 @@
 <script>
 import { mapGetters } from "vuex";
 import SpanRuEn from "@/components/SpanRu-En.vue";
-
+import detailsTag from '@/components/detailsTag.vue';
 
 export default {
-  components: { SpanRuEn },
+  components: { SpanRuEn ,detailsTag },
 
   methods: {
     splitFullName: (name) => {

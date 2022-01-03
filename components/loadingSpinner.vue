@@ -1,5 +1,5 @@
 <template>
-	<span class="my-spiner"></span>
+<span class="inline-flex justify-center items-center"> <div class="my-spiner mr-1"></div><slot></slot></span>
 </template>
 
 <script>
@@ -10,11 +10,10 @@ export default {
 
 <style >
 .my-spiner{
+background-color: transparent;
 
-	background-color: transparent;
-	margin:  .5em;
-height: 1em;
-width: 1em;
+height: .8em;
+width: .8em;
 	display: inline-block;
 	border-radius: 50%;
 
