@@ -6,8 +6,8 @@
     "serve": "nuxt --open",
     "build": "nuxt build",
     "start": "nuxt start",
-    "heroku-postbuild": "nuxt build",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "heroku-postbuild": "nuxt build"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
