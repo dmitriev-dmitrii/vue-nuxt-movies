@@ -41,30 +41,30 @@ background-position: 100% 100% ;
 
 		</div>
 			<img  
-			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`" 
-			:srcset="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"
+			:src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`" 
+			:srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`"
 			:alt="`${movie.title}`"
 			class="object-center object-cover border-b border-gray rounded-lg max-w-xs shadow-md"/>
 	</div>
 
 <iframe id="ytplayer" type="text/html" width="640" height="360"
-	:src="`http://www.youtube.com/embed/${movie.videos[0].key}`"
+	:src="`https://www.youtube.com/embed/${movie.videos[0].key}`"
 	frameborder="0"/>
 
 
-	<details v-if="movie.overview" class="mt-4 mb-4 text-sm">
-		<summary>
+	<details v-if="movie.overview" class="mt-4 mb-4 text-sm p-1 max-w-xs open:rounded-lg  open:shadow-md open:border hover:border-gray ">
+		<summary class="p-1 border border-gray rounded-lg shadow-md">
         <span-ru-en ru="Описание" en="Overview" />
 		</summary>
 		{{ movie.overview }}
     </details>
 
-<h1> cast {{!!movie.credits.cast}}</h1> -->
+
 <div class="pt-8" v-if="!!movie.credits.cast">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
 	<small-persons-list :personsList="movie.credits.cast"></small-persons-list>
-</div> 
-<h1>crew {{!!movie.credits.crew}}</h1>
+</div>  
+
 <div class="pt-8" v-if="!!movie.credits.crew">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Команда" en="Crew" /> </h3>
 	<small-persons-list :personsList="movie.credits.crew"></small-persons-list>
@@ -83,7 +83,7 @@ import SmallPersonsList from '@/components/SmallPersonsList.vue';
 import SpanRuEn from '@/components/SpanRu-En.vue';
 
 export default {
-  components: { SpanRuEn, SmallMoviesList, SmallPersonsList },
+components: { SpanRuEn, SmallMoviesList, SmallPersonsList },
 
 	computed : {
 		...mapGetters( 
@@ -119,6 +119,23 @@ validate ({route}) {
 
 <style >
 
+/* 
+summary {
+    margin: -.5em ;
+    padding: .5em;
+	transition: all 0.2s ease;
+}
+
+details[open] {
+    padding: .5em;
+
+}
+
+details[open] summary {
+    border-bottom: 1px solid currentColor;
+    margin-bottom: .5em;
+} */
+
 .my-bg{ 
 
 /* background: no-repeat  url("@/static/123.jpg") ;
@@ -139,15 +156,14 @@ animation: my-bg-slide 2s  ;
 }
 @keyframes my-bg-slide {
 0% {
-transform: translateX(-100%) ;
+transform: translateX(-100%)  ;
 opacity: 0;
 }
-60%  {
-	transform: translateX(0%) ;
-	opacity: .3;
+90%  {
+	transform: translateX(0%)   ;
+	opacity: 0.05;
 }
 100%  {
-    
 	opacity: 1;
 }
 
