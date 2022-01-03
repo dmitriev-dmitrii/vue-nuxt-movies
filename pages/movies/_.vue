@@ -44,21 +44,18 @@ background-position: 100% 100% ;
 			:src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`" 
 			:srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`"
 			:alt="`${movie.title}`"
-			class="object-center object-cover border-b border-gray rounded-lg max-w-xs shadow-md"/>
+			class="object-center object-cover border-b border-gray rounded-lg max-w-lg shadow-md"/>
 	</div>
 
-<iframe id="ytplayer" type="text/html" width="640" height="360"
-	:src="`https://www.youtube.com/embed/${movie.videos[0].key}`"
-	frameborder="0"/>
+<!-- <movieVideo /> -->
 
+	<details v-if="movie.overview" class="shadow-md border border-gray rounded-lg max-w-lg ">
+		<summary class="shadow-md  border  border-white hover:border-green rounded-lg">
 
-	<details v-if="movie.overview" class="mt-4 mb-4 text-sm p-1 max-w-xs open:rounded-lg  open:shadow-md open:border hover:border-gray ">
-		<summary class="p-1 border border-gray rounded-lg shadow-md">
         <span-ru-en ru="Описание" en="Overview" />
 		</summary>
 		{{ movie.overview }}
     </details>
-
 
 <div class="pt-8" v-if="!!movie.credits.cast">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
@@ -81,9 +78,10 @@ import { mapGetters } from 'vuex';
 import SmallMoviesList from '@/components/SmallMoviesList.vue';
 import SmallPersonsList from '@/components/SmallPersonsList.vue';
 import SpanRuEn from '@/components/SpanRu-En.vue';
+import movieVideo from '@/components/movies/movieVideo.vue';
 
 export default {
-components: { SpanRuEn, SmallMoviesList, SmallPersonsList },
+components: { SpanRuEn, SmallMoviesList, SmallPersonsList ,movieVideo},
 
 	computed : {
 		...mapGetters( 
@@ -107,34 +105,35 @@ validate ({route}) {
 	async fetch (context) {
         await context.store.dispatch('movie/axiosMovie',context.route.params.pathMatch )
 		await context.store.dispatch('movie/axiosMovieCredits',context.route.params.pathMatch )
-		await context.store.dispatch('movie/axiosMovieVideos',context.route.params.pathMatch )
 	},
 
-	// async data (context) {
-	// 	await context.store.dispatch('movie/axiosMovieVideos',context.route.params.pathMatch )
-	// },
+
 
 }
 </script>
 
 <style >
+details {
 
-/* 
+	margin: 1em 0;
+    padding: .5em ;
+}
+
 summary {
+	cursor: pointer;
     margin: -.5em ;
     padding: .5em;
-	transition: all 0.2s ease;
+	transition: all 0.3s ease;
 }
 
 details[open] {
     padding: .5em;
-
 }
 
 details[open] summary {
-    border-bottom: 1px solid currentColor;
+    
     margin-bottom: .5em;
-} */
+}
 
 .my-bg{ 
 
