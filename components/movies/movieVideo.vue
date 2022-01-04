@@ -7,19 +7,18 @@
 		<span-ru-en v-else ru="Смотреть Трейлер" en="Play Trailer"/>
 	</button>
 
-	<div v-if="!!movie.videos || openPlayer " :class="{ hidden : !openPlayer}" class="youtube-player__wrapper rounded-md border border-gray max-w-lg">
-		
-		
-		<button @click="closePlayer" class="cursor-pointer font-medium youtube-player__close-btn">  </button>
-
-		<iframe id="ytplayer"
-		type="text/html" 
-		class="youtube-player" 
-		allowfullscreen="true" 
-		frameborder="0"
-		:src="`https://www.youtube.com/embed/${movie.videos[0].key}?autoplay=1&mute=1`"/>
-
+	
+	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2">
+	<div class="w-full max-w-7xl flex justify-end">
+		<button @click="closePlayer" class="w-full  max-w-xs py-2  rounded-md border text-green cursor-pointer font-medium border-green "> close Player </button>
 	</div>
+	<div id="youtube-player" class="rounded-md max-w-7xl">
+	
+	</div>
+	</div>
+
+
+	
 
 </div>
 
@@ -27,11 +26,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import YouTubePlayer from 'youtube-player';
+
 export default {
 data(){
 	return {
 		loading:false,
-		openPlayer:false
+		openPlayer:false,
+		player:''
 	}
 },
 computed : {
@@ -53,84 +55,66 @@ methods	: {
 			this.openPlayer=true;
 			return
 		}
+
 		this.loading=true;
 		this.$store.dispatch('movie/axiosMovieVideos', this.id )
+
 		.then(() => {
 			this.loading=false;
 			this.openPlayer=true;
+			this.createPlayer(this.movie.videos[0].key)
 		})
 	},
-		closePlayer:  function () {
-			this.openPlayer=false;
-		}
+
+createPlayer: function (videoId) {
+			this.player = YouTubePlayer('youtube-player');
+			this.player.loadVideoById(videoId);
+			this.player.playVideo();
 },
 
-		
+		closePlayer:  function () {
+			this.openPlayer=false;
+			this.player.stopVideo();
+		},
 
+
+}
 }
 
 </script>
 
 <style>
-.youtube-player__wrapper{
 
-margin: 2rem auto;
-overflow: hidden;
+.youtube-player__wrapper{
+position: fixed;
+z-index: 999999;
+
+top:0;
+left: 0;
 
 display: flex;
+align-items: center;
 justify-content: center;
 flex-direction: column;
-align-items: center;
-	width: 100%;
-	min-height: 260px;
-	height: 50vw;
-	max-height: 500px;
-	/* max-height: 400px;
-	
-	max-width: 600px; */
+
+overflow: hidden;
+
+background-color: rgba(22, 22, 22, 1);
+width: 100vw;
+height: 100vh;
 }
-.youtube-player{
+
+#youtube-player{
+	overflow:hidden;
 	width: 100%;
 	height: 100%;
+	max-height: 555px;
 }
 
-.youtube-player__close-btn
-{
-	align-self: flex-end;
-	margin: .25rem;
-	background-color:red;
-	color: white;
-	height: 1.5rem;
-	width: 1.5rem;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid white;
-	border-radius: 50%;
-	position: relative;
-	transition: all .2s linear;
-}
-.youtube-player__close-btn:hover{
-		box-shadow: 0 0 3px 1px red;
-}
-.youtube-player__close-btn::before,.youtube-player__close-btn::after{
-	content: '';
-	position: absolute;
-	display: block;
-	height: 2px;
-	width: 50%;
-	background-color: #fff;
-	top: 50%;
-	left: 50%;
 
 
+.hidden-player{
+display: none;
 }
-.youtube-player__close-btn::after
-{
-	transform: translateX(-50%)translateY(-50%)rotate(-45deg);
-}
-.youtube-player__close-btn::before
-{
-		transform: translateX(-50%)translateY(-50%) rotate(45deg);
-}
+
 </style>
