@@ -1,16 +1,24 @@
 
 <template>
 <div >
+	
 	<button  @click="getVideo" class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium hover:border-green">
 		<loadingSpinner v-if="loading">loading...</loadingSpinner>
 		<span-ru-en v-else ru="Смотреть Трейлер" en="Play Trailer"/>
 	</button>
 
-	<div v-if="!!movie.videos || openPlayer " :class="{ hidden : !openPlayer}" class="youtube-player__wrapper rounded-md border border-gray">
+	<div v-if="!!movie.videos || openPlayer " :class="{ hidden : !openPlayer}" class="youtube-player__wrapper rounded-md border border-gray max-w-lg">
+		
+		
 		<button @click="closePlayer" class="cursor-pointer font-medium youtube-player__close-btn">  </button>
-		<iframe id="ytplayer" type="text/html" class="youtube-player" allowfullscreen="true"
-		:src="`https://www.youtube.com/embed/${movie.videos[0].key}`"
-		frameborder="0"/>
+
+		<iframe id="ytplayer"
+		type="text/html" 
+		class="youtube-player" 
+		allowfullscreen="true" 
+		frameborder="0"
+		:src="`https://www.youtube.com/embed/${movie.videos[0].key}?autoplay=1&mute=1`"/>
+
 	</div>
 
 </div>
@@ -74,17 +82,18 @@ justify-content: center;
 flex-direction: column;
 align-items: center;
 	width: 100%;
-	height: 100%;
-
-	max-height: 400px;
-	max-width: 600px;
+	min-height: 260px;
+	height: 50vw;
+	max-height: 500px;
+	/* max-height: 400px;
+	
+	max-width: 600px; */
 }
 .youtube-player{
 	width: 100%;
 	height: 100%;
-
-
 }
+
 .youtube-player__close-btn
 {
 	align-self: flex-end;
