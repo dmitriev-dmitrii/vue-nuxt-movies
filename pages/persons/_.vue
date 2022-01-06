@@ -13,8 +13,7 @@
 			<NuxtLink  :to="`/persons/person/${person.id}`">
 			<div class="flex justify-between">
 				<img :alt="`${person.name}`" loading="eager" class="object-center  object-cover  h-50 w-36 rounded-lg "
-				:srcset="`https://image.tmdb.org/t/p/original/${person.profile_path}`"
-				:src="`https://image.tmdb.org/t/p/w235_and_h235_face/${person.profile_path}`"  >
+				:src="`https://image.tmdb.org/t/p/w300/${person.profile_path}`"  >
 				<div class="flex flex-col justify-between  p-2 ">
 					<h2 class="text-xl  font-bold  sm:text-right ">{{ splitFullName(person.name).firstName }} <br> {{splitFullName(person.name).lastName}} </h2>
 					<div class="rounded-full font-bold text-right text-sm "> 

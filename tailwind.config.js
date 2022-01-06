@@ -10,7 +10,7 @@ module.exports = {
 		},
 		colors: {
 			green: {
-				// light: '#85d7ff',
+				light: 'rgba(0, 220, 128, 0.1)',
 				DEFAULT: '#00DC82',
 				// dark: '#009eeb',
 			},
@@ -32,8 +32,4 @@ module.exports = {
 		}
 	},
 
-	
-	plugins: [
-	require('@tailwindcss/forms'),
-	],
 };

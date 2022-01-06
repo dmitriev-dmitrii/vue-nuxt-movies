@@ -10,7 +10,7 @@
       v-for="movie in moviesList" :key="generateItemKey (movie.credit_id , movie.id)">
 			<img loading="lazy" 
 			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`" 
-      :srcset="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"
+
 			:alt="`${movie.title}`"
 			class="object-center object-cover h-64 w-full border-b border-gray  "
 			/>

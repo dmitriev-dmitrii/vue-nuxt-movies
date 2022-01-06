@@ -20,7 +20,9 @@
           persons
           </NuxtLink>
         </li>
-
+        <li :class=navLiStyles  >
+          <searchForm/>
+        </li>
 
       </ul>
     </nav>

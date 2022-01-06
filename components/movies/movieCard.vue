@@ -2,9 +2,8 @@
 <template>
 <div>
 <NuxtLink  :to="`/movies/${movie.id}`" class=" rounded-lg h-58 border border-gray overflow-hidden flex justify-between sm:flex-col sm:justify-between" >
-      <img loading="lazy" 
-			:src="`https://image.tmdb.org//t/p/w500/${movie.poster_path}`" 
-      :srcset="`https://image.tmdb.org//t/p/w300/${movie.poster_path}`" 
+    <img loading="lazy" 
+			:src="`https://image.tmdb.org//t/p/w300/${movie.poster_path}`" 
 			:alt="`${movie.title}`"
 			class="object-center object-cover h-64 border-b border-gray  max-w-md"/>
 			<div class="flex flex-col  justify-between items-center  overflow-hidden w-full  p-2 sm:relative sm:overflow-visible ">

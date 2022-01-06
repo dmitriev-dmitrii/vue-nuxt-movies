@@ -28,7 +28,6 @@
     <img
         class=" object-center bject-cover shadow-md border  border-gray rounded-lg h-40 sm:h-52 md:h-80 "
         :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${person.profile_path}`"
-        :srcset="`https://image.tmdb.org/t/p/original/${person.profile_path}`"
         :alt="`${person.name}`"
         loading="lazy"
       />

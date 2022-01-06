@@ -47,11 +47,8 @@ background-position: 100% 100% ;
 			class="object-center object-cover border-b border-gray rounded-lg max-w-lg shadow-md"/>
 	</div>
 
-<movieVideo :id='movie.id' />
-
-
-
-<detailsTag>
+<movieVideo   :id='movie.id' />
+<detailsTag >
 	<span-ru-en slot="summary" ru="Описание" en="Overview" />
 	{{ movie.overview }}
 </detailsTag>
@@ -65,7 +62,6 @@ background-position: 100% 100% ;
     <h3  class="font-medium  text-md "> <span-ru-en ru="Команда" en="Crew" /> </h3>
 	<small-persons-list :personsList="movie.credits.crew"></small-persons-list>
 </div> 
-
 
 </div>
 

@@ -9,7 +9,7 @@
 
 	
 	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2">
-	<div class="w-full max-w-7xl flex justify-end">
+	<div class="w-full max-w-7xl flex justify-centr sm:justify-end">
 		<button @click="closePlayer" class="w-full  max-w-xs py-2  rounded-md border text-green cursor-pointer font-medium border-green "> close Player </button>
 	</div>
 	<div id="youtube-player" class="rounded-md max-w-7xl">
@@ -53,6 +53,7 @@ methods	: {
 	getVideo:  function () {
 		if (!!this.movie.videos){
 			this.openPlayer=true;
+			this.player.playVideo();
 			return
 		}
 
@@ -60,17 +61,17 @@ methods	: {
 		this.$store.dispatch('movie/axiosMovieVideos', this.id )
 
 		.then(() => {
+			this.player = YouTubePlayer('youtube-player');
+			this.player.loadVideoById(this.movie.videos[0].key)
+
 			this.loading=false;
 			this.openPlayer=true;
-			this.createPlayer(this.movie.videos[0].key)
+			
+			this.player.playVideo();
+		
 		})
 	},
 
-createPlayer: function (videoId) {
-			this.player = YouTubePlayer('youtube-player');
-			this.player.loadVideoById(videoId);
-			this.player.playVideo();
-},
 
 		closePlayer:  function () {
 			this.openPlayer=false;

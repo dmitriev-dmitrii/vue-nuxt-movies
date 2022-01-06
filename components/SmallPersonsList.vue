@@ -11,7 +11,6 @@
       
 			<img loading="lazy" 
 			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${person.profile_path}`" 
-      :srcset="`https://image.tmdb.org//t/p/original/${person.profile_path}`"
 			:alt="`${person.title}`"
 			class="object-center object-cover h-48 w-full border-b border-gray  "
 			/>
