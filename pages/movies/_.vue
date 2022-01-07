@@ -19,7 +19,7 @@ background-position: 100% 100% ;
 
 		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
 			
-			<h1 :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs"> 
+			<h1  :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs"> 
 				<span v-if="!!movie.name" >{{ movie.name }}</span>
 				<span v-else > {{ movie.title }}</span>
 			</h1>
@@ -99,9 +99,9 @@ validate ({route}) {
     },
 
 	async fetch (context) {
-		const id = context.route.params.pathMatch 
-        await context.store.dispatch('movie/axiosMovie', id )
-		await context.store.dispatch('movie/axiosMovieCredits', id )
+		const id = context.route.params.pathMatch ;
+        await context.store.dispatch('movie/axiosMovie', id );
+		// await context.store.dispatch('movie/axiosMovieCredits', id );
 	},
 
 

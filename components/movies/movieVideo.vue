@@ -2,9 +2,10 @@
 <template>
 <div >
 	
-	<button  @click="getVideo" :disabled=!!movieError  class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium hover:border-green">
+	<button  @click="getVideo" :disabled=!!movieError  class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium  hover:border-green  hover:bg-green-light transition ease-in-out" :class="{ 'border-red pointer-events-none opacity-50': movieError }">
+		<span-ru-en v-if="!loading&!movieError" ru="Смотреть Трейлер" en="Play Trailer"/>
 		<loadingSpinner v-if="loading">loading...</loadingSpinner>
-		<span-ru-en v-else ru="Смотреть Трейлер" en="Play Trailer"/>
+		<span-ru-en v-if="movieError" class="text-red" ru="Трейлер Отсутвует" en="Trailer is Missing"/>
 	</button>
 
 	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2">
@@ -31,7 +32,7 @@ export default {
 data(){
 	return {
 		loading:false,
-		movieError:'',
+		movieError:false,
 		openPlayer:false,
 		player:''
 	}
@@ -51,6 +52,8 @@ computed : {
 	},
 methods	: {
 	getVideo:  function () {
+		
+		
 		if (!!this.movie.videos){
 			this.openPlayer=true;
 			this.player.playVideo();
@@ -59,23 +62,24 @@ methods	: {
 
 		this.loading=true;
 		this.$store.dispatch('movie/axiosMovieVideos', this.id )
-
 		.then(() => {
-			if (!!this.movie.videos.length) { 
-				this.movieError = 'Trailer is Missing';
-				this.loading=false;
-				this.openPlayer=false;
-				return false 
-				}
+			try
+			{
 			this.player = YouTubePlayer('youtube-player');
 			this.player.loadVideoById(this.movie.videos[0].key)
-
 			this.loading=false;
 			this.openPlayer=true;
 			
 			this.player.playVideo();
-		
+			}
+			catch {
+			this.erorTrailer();
+			}
 		})
+
+
+
+
 	},
 
 
@@ -84,6 +88,13 @@ methods	: {
 			this.player.stopVideo();
 		},
 
+		erorTrailer:  function () {
+			this.openPlayer=false;
+			this.player.stopVideo();
+			this.loading=false;
+			this.movieError = true;
+			
+		},
 
 }
 }

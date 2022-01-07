@@ -6,7 +6,7 @@
     <div  :class="{ 'overflow-x-auto grid grid-rows-1 grid-flow-col' : applyScrollItems (moviesList.length )}" >
 
     <NuxtLink :to="`/movies/${movie.id}`"
-      class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block"
+      class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block  hover:border-green  hover:bg-green-light transition ease-in-out"
       v-for="movie in moviesList" :key="generateItemKey (movie.credit_id , movie.id)">
 			<img loading="lazy" 
 			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`" 

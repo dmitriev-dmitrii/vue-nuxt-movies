@@ -6,7 +6,7 @@
     <div  :class="{ 'overflow-x-auto grid grid-rows-1 grid-flow-col' : applyScrollItems (personsList.length )}" >
 
     	<NuxtLink :to="`/persons/person/${person.id}`"
-      class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block"
+      class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block  hover:border-green  hover:bg-green-light transition ease-in-out"
       v-for="person in personsList" :key="generateItemKey(person.credit_id,person.id)">
       
 			<img loading="lazy" 

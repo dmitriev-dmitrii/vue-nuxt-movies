@@ -10,7 +10,7 @@
     </NuxtLink>
 
     <nav>
-      <ul class="flex flex-wrap">
+      <ul class="flex flex-wrap ">
         <li :class=navLiStyles >
           <NuxtLink to="/movies" >
           movies
@@ -21,8 +21,8 @@
           persons
           </NuxtLink>
         </li>
-
-        <li :class=navLiStyles  class="w-full sm:max-w-lg sm:ml-2 md:ml-auto" >
+        
+        <li  class="w-full sm:max-w-lg sm:ml-2 md:ml-auto" >
           <searchForm/>
         </li>
 
@@ -39,7 +39,7 @@ export default {
 
 data:  () =>{
     return {
-      navLiStyles: ['mr-1','py-4']
+      navLiStyles: ['mr-2']
     }
   },
 }

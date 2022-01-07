@@ -2,7 +2,7 @@
 <template>
 
   <details  class="shadow-md border border-gray rounded-lg max-w-lg ">
-		<summary class="shadow-md  border  border-white hover:border-green rounded-lg">
+		<summary class="shadow-md  border  border-white  rounded-lg  hover:border-green  hover:bg-green-light ">
     <slot name="summary"></slot>
 		</summary>
 		<slot></slot>

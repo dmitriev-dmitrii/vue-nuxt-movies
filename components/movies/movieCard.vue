@@ -1,7 +1,7 @@
 
 <template>
 <div>
-<NuxtLink  :to="`/movies/${movie.id}`" class=" rounded-lg h-58 border border-gray overflow-hidden flex justify-between sm:flex-col sm:justify-between" >
+<NuxtLink  :to="`/movies/${movie.id}`" class=" rounded-lg h-58 border border-gray hover:border-green  hover:bg-green-light transition ease-in-out  overflow-hidden flex justify-between sm:flex-col sm:justify-between" >
     <img loading="lazy" 
 			:src="`https://image.tmdb.org//t/p/w300/${movie.poster_path}`" 
 			:alt="`${movie.title}`"

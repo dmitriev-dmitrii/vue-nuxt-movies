@@ -30,21 +30,19 @@ export const mutations = {
 export const actions = {
 
     axiosMovie: async (context,movieId) => {
-    const request = await axios.get(
-        `${api.url}/movie/${movieId}?${api.key}&language=${context.rootState.language}`
-    );
-    if (request.status == 200) {
-        context.commit('mutateMovie', request.data );
-    }
+    
+    const movieRequest = await axios.get(`${api.url}/movie/${movieId}?${api.key}&language=${context.rootState.language}`);
+    const creditsRequest = await axios.get(`${api.url}/movie/${movieId}/credits?${api.key}&language=${context.rootState.language}`);
+    
+    Promise.all([movieRequest, creditsRequest]).then( requests => {
+        context.commit('mutateMovie',  requests[0].data );
+        context.commit('mutateMovieCredits', requests[1].data );
+    });
+
 },
-axiosMovieCredits: async (context,movieId) => {
-    const request = await axios.get(
-        `${api.url}/movie/${movieId}/credits?${api.key}&language=${context.rootState.language}`
-    );
-    if (request.status == 200) {
-        context.commit('mutateMovieCredits', request.data );
-    }
-},
+
+
+
 axiosMovieVideos: async (context,movieId) => {
     const request = await axios.get(
         `${api.url}/movie/${movieId}/videos?${api.key}&language=${context.rootState.language}`
