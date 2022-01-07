@@ -6,7 +6,7 @@
     <button  class=" h-0 py-4 pl-2 pr-2.5 border border-gray border-l-0 rounded-br-md rounded-tr-md flex items-center justify-center focus:bg-green-light hover:bg-green-light" type="submit"><searchIcon/></button>
     <ul   class="ul-search-result absolute w-full  bg-white border border-gray border-t-0 rounded-bl-md rounded-br-md  shadow ">
       <li v-if="loading" :class=searchResultCardStyles ><loadingSpinner>loading...</loadingSpinner></li>
-      <li  v-for="item in searchResultArray" :key=item.id :class=searchResultCardStyles> <NuxtLink    :to="`${routerLinkUrl(item)}`"  class="block w-full flex" ><span class="border border-green border-l-0 border-r-0 border-t-0">{{ item.title || item.name }}</span> <span class="ml-auto block font-normal italic text-right">{{item.media_type}}</span> </NuxtLink></li>
+      <li @click="cleanSearchResult" v-for="item in searchResultArray" :key=item.id :class=searchResultCardStyles> <NuxtLink    :to="`${routerLinkUrl(item)}`"  class="block w-full flex" ><span class="border border-green border-l-0 border-r-0 border-t-0">{{ item.title || item.name }}</span> <span class="ml-auto block font-normal italic text-right">{{item.media_type}}</span> </NuxtLink></li>
     </ul>
 
   </form>
@@ -42,11 +42,12 @@ data:  () =>{
     routerLinkUrl: function (obj) {
       if (obj.media_type == 'person'){return `/persons/person/${obj.id}`}
       if (obj.media_type == 'movie'){return `/movies/${obj.id}`}
+    },
+    cleanSearchResult: function () {
+      this.searchResultArray = [];
     }
   },
-  mounted (){
-    this.sendSearchReqest()
-  }
+
 }
 </script>
 
