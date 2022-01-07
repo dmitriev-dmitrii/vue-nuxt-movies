@@ -2,12 +2,11 @@
 <template>
 <div >
 	
-	<button  @click="getVideo" class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium hover:border-green">
+	<button  @click="getVideo" :disabled=!!movieError  class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium hover:border-green">
 		<loadingSpinner v-if="loading">loading...</loadingSpinner>
 		<span-ru-en v-else ru="Смотреть Трейлер" en="Play Trailer"/>
 	</button>
 
-	
 	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2">
 	<div class="w-full max-w-7xl flex justify-centr sm:justify-end">
 		<button @click="closePlayer" class="w-full  max-w-xs py-2  rounded-md border text-green cursor-pointer font-medium border-green "> close Player </button>
@@ -32,6 +31,7 @@ export default {
 data(){
 	return {
 		loading:false,
+		movieError:'',
 		openPlayer:false,
 		player:''
 	}
@@ -61,6 +61,12 @@ methods	: {
 		this.$store.dispatch('movie/axiosMovieVideos', this.id )
 
 		.then(() => {
+			if (!!this.movie.videos.length) { 
+				this.movieError = 'Trailer is Missing';
+				this.loading=false;
+				this.openPlayer=false;
+				return false 
+				}
 			this.player = YouTubePlayer('youtube-player');
 			this.player.loadVideoById(this.movie.videos[0].key)
 
