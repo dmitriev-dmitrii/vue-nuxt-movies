@@ -1,13 +1,13 @@
 
 <template>
 
-  <form class="flex items-center relative  rounded-md  p-0 shadow w-full my-search-form" ref="searchForm" @submit.prevent="sendSearchReqest">
-    <input v-model="searchInputValue" @input="sendSearchReqest" type="text" class="w-full p-4 pl-1 font-medium h-0  border border-gray rounded-bl-md rounded-tl-md focus:bg-green-light hover:bg-green-light focus:border-green  focus:outline-none">
+  <form class="my-search-form flex items-center relative  rounded-md  p-0 shadow w-full "  @submit.prevent="redirectToSearchPage">
+    <input v-model="searchInputValue" @input="deleayRequestOnInput" type="text" class="w-full p-4 pl-1 font-medium h-0  border border-gray rounded-bl-md rounded-tl-md focus:bg-green-light hover:bg-green-light focus:border-green  focus:outline-none">
     
     <button  class=" h-0 py-4 pl-2 pr-2.5 border border-gray border-l-0 rounded-br-md rounded-tr-md flex items-center justify-center focus:bg-green-light hover:bg-green-light" type="submit"><searchIcon/></button>
     <ul   class="ul-search-result absolute w-full  bg-white border border-gray border-t-0 rounded-bl-md rounded-br-md  shadow ">
       <li v-if="loading" :class=searchResultCardStyles ><loadingSpinner>loading...</loadingSpinner></li>
-      <li @click="clearSearchResult" v-for="item in searchResultArray" :key=item.id :class=searchResultCardStyles> <NuxtLink    :to="`${routerLinkUrl(item)}`"  class="block w-full flex" >{{ item.title || item.name }} <span class="ml-auto block font-normal italic text-right">{{item.media_type}}</span> </NuxtLink></li>
+      <li  v-for="item in searchResultArray" :key=item.id :class=searchResultCardStyles> <NuxtLink    :to="`${routerLinkUrl(item)}`"  class="block w-full flex" >{{ item.title || item.name }} <span class="ml-auto block font-normal italic text-right pl-2">{{item.media_type}}</span> </NuxtLink></li>
     </ul>
 
   </form>
@@ -23,22 +23,19 @@ export default {
 
 data:  () =>{
     return {
-      searchResultCardStyles: ['border' ,'border-gray' ,'p-1','w-full' , 'border-r-0' ,'border-l-0' ,'border-b-0' ,'focus:bg-green-light ',' hover:bg-green-light','font-semibold' , ],
+      searchResultCardStyles: ['border' ,'border-gray','py-1' ,'px-2','w-full' , 'border-r-0' ,'border-l-0' ,'border-b-0' ,'focus:bg-green-light ',' hover:bg-green-light','font-semibold' , ],
       searchResultArray:[],
+      timeOutSearchReqest:false,
       loading:false,
       searchInputValue:''
     }
   },
   methods:{
     sendSearchReqest : async function () {
-      if (this.searchInputValue.length==0) {
-        return false
-      }
-      this.loading= true;
+      // console.log('time out ? sended request');
       const request = await axios.get(`${api.url}/search/multi?${api.key}&language=en&query=${this.searchInputValue}`)
       this.searchResultArray = request.data.results;
-      this.loading= false
-
+      this.loading= false;
     },
     routerLinkUrl: function (obj) {
       if (obj.media_type == 'person'){return `/persons/person/${obj.id}`}
@@ -46,37 +43,74 @@ data:  () =>{
     },
     clearSearchResult: function () {
         this.searchResultArray =[];
-    }
+    },
+
+    deleayRequestOnInput: function () {
+
+      if (this.searchInputValue.length==0) {
+        this.clearSearchResult();
+        this.loading= false;
+        return false
+        }
+      
+      this.loading= true;
+
+      if (!!this.timeOutSearchReqest) { 
+        // console.log('time out clear');
+        clearTimeout(this.timeOutSearchReqest)
+      }
+
+      this.timeOutSearchReqest = setTimeout(
+      this.sendSearchReqest
+      , 
+      1000)
+    },
+
+    redirectToSearchPage: function () {
+
+        this.searchInputValue ;
+    },
+
+
   },
+
+
 
 }
 </script>
 
 <style>
 .ul-search-result{
-  z-index: 8888;
+  z-index: 7777;
   left: 0;
   top: 100%;
   max-height: 50vh;
   overflow-y: scroll;
-  display: none;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  transition: all .3s ease;
 }
 .my-search-form:focus-within.my-search-form .ul-search-result{
-  display: block;
-}
-.ul-search-result:nth-child(n){
-	animation: li-in .3s ease ;
+  user-select: auto;
+  pointer-events: auto;
+  opacity: 1;
 }
 
-@keyframes li-in {
+/* .ul-search-result:nth-child(n){
+  transition: all .2s linear;
+	animation: li-in .3s ease ;
+} */
+
+/* @keyframes li-in {
 	0%   { 
-    transform: translateY(-10%);
+    transform: translateY(-2em);
     opacity: 0;
 	}
 	100%  { 
 		transform: translateY(0) ;
     opacity: 1;
 	}
-}
+} */
 
 </style>
