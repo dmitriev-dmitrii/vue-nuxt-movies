@@ -101,8 +101,6 @@ validate ({route}) {
 		// await context.store.dispatch('movie/axiosMovieCredits', id );
 	},
 
-
-
 }
 </script>
 

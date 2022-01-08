@@ -67,8 +67,7 @@ data:  () =>{
     },
 
     redirectToSearchPage: function () {
-
-        this.searchInputValue ;
+        this.$router.push({path: `/search/${this.searchInputValue}`});
     },
 
 
