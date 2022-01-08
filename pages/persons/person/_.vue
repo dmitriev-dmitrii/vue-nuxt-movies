@@ -38,8 +38,6 @@
 	{{ person.biography }}
 </detailsTag>
 
-
-    
 <div class="pt-8" v-if="person.moviesList.cast.length > 0">
     <h3  class="font-medium  text-md ">  <span-ru-en ru="Известные Работы" en="Known For " /> </h3>
     <small-movies-list   :moviesList="person.moviesList.cast" />
@@ -55,11 +53,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import SpanRuEn from "@/components/SpanRu-En.vue";
-import detailsTag from '@/components/detailsTag.vue';
 
 export default {
-  components: { SpanRuEn ,detailsTag },
 
   methods: {
     splitFullName: (name) => {

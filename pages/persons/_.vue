@@ -8,31 +8,7 @@
 	</p>
 
 	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
-
-		<article  v-for="person in persons" :key="person.id" class=" rounded-lg border border-gray flex flex-col justify-between shadow overflow-hidden ">
-			<NuxtLink  :to="`/persons/person/${person.id}`">
-			<div class="flex justify-between">
-				<img :alt="`${person.name}`" loading="eager" class="object-center  object-cover  h-50 w-36 rounded-lg "
-				:src="`https://image.tmdb.org/t/p/w300/${person.profile_path}`"  >
-				<div class="flex flex-col justify-between  p-2 ">
-					<h2 class="text-xl  font-bold  sm:text-right ">{{ splitFullName(person.name).firstName }} <br> {{splitFullName(person.name).lastName}} </h2>
-					<div class="rounded-full font-bold text-right text-sm "> 
-						<span-ru-en ru="Рейтинг" en="Popularity"/>{{ person.popularity }}
-					</div>
-				</div>
-
-			</div>
-
-				<ul class="p-2 text-sm ">
-					<li v-for="movie in person.known_for" :key=movie.id class="truncate " >
-						<p v-if="!!movie.name" :title="movie.name">{{movie.name}}</p>
-						<p v-else :title="movie.title">{{movie.title}}</p>
-					</li>
-				</ul>
-			
-			</NuxtLink>
-		</article>
-
+		<person-card :person='person' v-for="person in persons" :key="person.id"/>
 	</div>
 
 <Pagination   :totalPages="pagination" />
@@ -44,22 +20,9 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import Pagination from '@/components/Pagination.vue';
-
-
+import personCard from '@/components/persons/personCard'
 export default {
-components: { Pagination },
-
-methods:
-{
-splitFullName: (name)=>{
-
-let [firstName,  ...lastName] = name.split(" ");
-lastName=lastName.join(' ');
-return {firstName,lastName}
-},
-
-},
+components : { personCard },
 	computed : {
 		...mapGetters( 
 			{

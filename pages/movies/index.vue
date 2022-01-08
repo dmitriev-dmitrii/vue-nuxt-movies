@@ -14,7 +14,7 @@
 			
 			<div class="grid grid-cols-1 gap-4  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" >
 
-				<moviesCard v-for="movie in movieType.moviesList" :key="movie.id" :movie='movie'/>
+				<movie-card v-for="movie in movieType.moviesList" :key="movie.id" :movie='movie'/>
 
 				<div class=" rounded-lg h-58 border border-gray font-bold  overflow-hidden flex justify-center items-center flex-col text-3xl"
 					:class="{hidden : movieType.pagesLoadedCounter == movieType.totalPages}">
@@ -32,12 +32,10 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import moviesTypesInput from '@/components/movies/moviesTypesInput.vue';
-import moviesCard from '@/components/movies/movieCard.vue';
-import loadingSpinner from '@/components/loadingSpinner.vue';
+import movieCard from '../../components/movies/movieCard.vue';
 
 export default {
-components: { moviesTypesInput,moviesCard ,loadingSpinner },
+  components: { movieCard },
 
 	computed : {
 		...mapGetters( 

@@ -17,9 +17,9 @@ background-position: 100% 100% ;
 `">
 </div>
 
-		<div class="flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
+		<div class=" txt-shadow flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
 			
-			<h1  :title="movie.name" class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs"> 
+			<h1  :title="movie.name" class="  font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs "> 
 				<span v-if="!!movie.name" >{{ movie.name }}</span>
 				<span v-else > {{ movie.title }}</span>
 			</h1>
@@ -47,7 +47,8 @@ background-position: 100% 100% ;
 			class="object-center object-cover border-b border-gray rounded-lg max-w-lg shadow-md"/>
 	</div>
 
-<movieVideo   :id='movie.id' />
+<movie-video   :id='movie.id' />
+
 <detailsTag >
 	<span-ru-en slot="summary" ru="Описание" en="Overview" />
 	{{ movie.overview }}
@@ -61,6 +62,7 @@ background-position: 100% 100% ;
 <div class="pt-8" v-if="!!movie.credits.crew">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Команда" en="Crew" /> </h3>
 	<small-persons-list :personsList="movie.credits.crew"></small-persons-list>
+
 </div> 
 
 </div>
@@ -70,15 +72,10 @@ background-position: 100% 100% ;
 <script>
 
 import { mapGetters } from 'vuex';
-import SmallMoviesList from '@/components/SmallMoviesList.vue';
-import SmallPersonsList from '@/components/SmallPersonsList.vue';
-import SpanRuEn from '@/components/SpanRu-En.vue';
-import detailsTag from '@/components/detailsTag.vue';
-import movieVideo from '@/components/movies/movieVideo.vue';
+import movieVideo from '@/components/movies/movieVideo';
 
 export default {
-components: { SpanRuEn, SmallMoviesList, SmallPersonsList ,movieVideo ,detailsTag},
-
+components:{movieVideo},
 	computed : {
 		...mapGetters( 
 			{
@@ -110,7 +107,9 @@ validate ({route}) {
 </script>
 
 <style >
-
+.txt-shadow{
+	text-shadow: 0px 0 5px #fff;
+}
 .my-bg{ 
 
 animation: my-bg-slide 2s  ;
