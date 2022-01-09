@@ -22,7 +22,7 @@ module.exports = {
 			gray: {
 				// light: '#85d7ff',
 				DEFAULT: '#80808033',
-				// dark: '#009eeb',
+				dark: '#5a5a5a',
 			},
 			black: {
 				// light: '#85d7ff',

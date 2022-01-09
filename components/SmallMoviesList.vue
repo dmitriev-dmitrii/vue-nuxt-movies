@@ -8,12 +8,7 @@
     <NuxtLink :to="`/movies/${movie.id}`"
       class=" h-58 w-44 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block  hover:border-green  hover:bg-green-light transition ease-in-out"
       v-for="movie in moviesList" :key="generateItemKey (movie.credit_id , movie.id)">
-			<img loading="lazy" 
-			:src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`" 
-
-			:alt="`${movie.title}`"
-			class="object-center object-cover h-64 w-full border-b border-gray  "
-			/>
+      <defalutImage :type="'movie'" :src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${movie.poster_path}`"  :alt="`${movie.title}`"  class="h-64 w-full border-b border-gray" />
     	<h4 v-if="!!movie.name" :title="movie.name" class="font-medium  truncate text-center p-1"> {{ movie.name }}</h4>
       <h4 v-else :title="movie.title" class="font-medium  truncate text-center p-1" > {{ movie.title }} </h4>
       <h4 v-if="!!movie.job" :title="movie.job" class="font-medium  truncate text-center p-1 text-green"> {{ movie.job }}</h4>

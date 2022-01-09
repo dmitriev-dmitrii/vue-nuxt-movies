@@ -1,6 +1,6 @@
 
 <template>
-<div >
+<div @keyup.esc="closePlayer">
 	
 	<button  @click="getVideo" :disabled=!!movieError  class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium  hover:border-green  hover:bg-green-light transition ease-in-out" :class="{ 'border-red pointer-events-none opacity-50': movieError }">
 		<span-ru-en v-if="!loading&!movieError" ru="Смотреть Трейлер" en="Play Trailer"/>
@@ -71,6 +71,7 @@ methods	: {
 			this.openPlayer=true;
 			
 			this.player.playVideo();
+			
 			}
 			catch {
 			this.erorTrailer();

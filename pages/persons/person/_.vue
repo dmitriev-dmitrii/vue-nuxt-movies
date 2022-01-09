@@ -24,13 +24,8 @@
 	
         </ul>
     </div>
+    <defalutImage :type="'person'" :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${person.profile_path}`" :alt="`${person.name}`"  class="person__avatar shadow-md border  border-gray rounded-lg  overflow-hidden  "/>
 
-    <img
-        class=" object-center bject-cover shadow-md border  border-gray rounded-lg h-40 sm:h-52 md:h-80 "
-        :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${person.profile_path}`"
-        :alt="`${person.name}`"
-        loading="lazy"
-      />
     </div>
 
 <detailsTag  v-if="!!person.biography">
@@ -92,3 +87,11 @@ export default {
 };
 </script>
 
+<style>
+.person__avatar{
+
+  height: 350px;
+  width: 300px;
+
+}
+</style>

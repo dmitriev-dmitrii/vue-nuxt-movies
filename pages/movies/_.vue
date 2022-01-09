@@ -40,11 +40,7 @@ background-position: 100% 100% ;
 			</ul>
 
 		</div>
-			<img  
-			:src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`" 
-			:srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`"
-			:alt="`${movie.title}`"
-			class="object-center object-cover border-b border-gray rounded-lg max-w-lg shadow-md"/>
+			<defalutImage :type="'person'" :srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`" :src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"   :alt="`${movie.title}`"   class="movie__avatar border-b border-gray w-full max-w-xs  overflow-hidden  rounded-lg" />
 	</div>
 
 <movie-video   :id='movie.id' />
@@ -105,6 +101,9 @@ validate ({route}) {
 </script>
 
 <style >
+.movie__avatar {
+	min-height:480px;
+}
 .txt-shadow{
 	text-shadow: 0px 0 5px #fff;
 }
