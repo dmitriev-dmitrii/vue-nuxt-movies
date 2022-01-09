@@ -1,9 +1,9 @@
 
 <template>
 
-<div>
+<div class="flex flex-wrap" >
 	<input class="hidden" :checked="currentMoviesType == movieType" name="moviesTypes" type="radio"  :id="movieType" :value="movieType" @input="updateMoviesType">
-  <label :for="movieType" class="px-2 py-1  mr-2 mb-2  rounded-md border border-gray cursor-pointer font-medium"> 
+  <label :for="movieType" class="px-2 py-1 mr-2 mb-2 rounded-md border border-gray cursor-pointer font-medium block "> 
     {{ viewMovieType (movieType) | capitalize }}
 	</label>
 </div>

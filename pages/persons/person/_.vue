@@ -82,7 +82,6 @@ export default {
       context.route.params.pathMatch
     );
 
-
   },
 };
 </script>
@@ -90,8 +89,8 @@ export default {
 <style>
 .person__avatar{
 
-  height: 350px;
-  width: 300px;
+  max-height: 350px;
+  max-width: 300px;
 
 }
 </style>
