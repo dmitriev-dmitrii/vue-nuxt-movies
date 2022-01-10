@@ -94,7 +94,6 @@ validate ({route}) {
 	async fetch (context) {
 		const id = context.route.params.pathMatch ;
         await context.store.dispatch('movie/axiosMovie', id );
-		// await context.store.dispatch('movie/axiosMovieCredits', id );
 	},
 
 }
