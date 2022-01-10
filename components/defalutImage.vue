@@ -3,8 +3,8 @@
                 <loadingSpinner v-show='loading' class="w-full h-full   text-5xl"/>
                 <img v-show='!loading & !imgError' @load="onImgLoad" @error="onImgError" :srcset=srcset :src=src :alt=alt  class="w-full h-full object-center  object-cover"/>
 
-                <img v-if="type =='movie'" v-show="imgError" src="@/static/movieNoImg.jpg" class="w-full h-full object-center  object-cover opacity-20"/>
-                <img v-if="type =='person'" v-show="imgError" src="@/static/personNoImg.png" class="w-full h-full  object-center object-cover opacity-10"/>
+                <img v-if="type =='movie'" v-show="imgError" src="@/static/movieNoImg.jpg" class="w-full h-full object-center  object-cover opacity-20" style="content-visibility: auto"/>
+                <img v-if="type =='person'" v-show="imgError" src="@/static/personNoImg.png" class="w-full h-full  object-center object-cover opacity-10" style="content-visibility: auto" />
 
         </div>
 </template>

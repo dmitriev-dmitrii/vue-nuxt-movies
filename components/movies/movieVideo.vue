@@ -66,7 +66,24 @@ methods	: {
 			try
 			{
 			this.player = YouTubePlayer('youtube-player');
-			this.player.loadVideoById(this.movie.videos[0].key)
+			// Final Trailer
+			let youTubePlayerKey ;
+
+			
+
+			const trailerObj = () => {
+
+				for (const item of this.movie.videos) {
+					if (item.type == 'Trailer') return item;
+				}
+				return false
+			}
+			
+
+			youTubePlayerKey = !!trailerObj() ? trailerObj().key  :  this.movie.videos[0].key
+
+
+			this.player.loadVideoById(youTubePlayerKey)
 			this.loading=false;
 			this.openPlayer=true;
 			

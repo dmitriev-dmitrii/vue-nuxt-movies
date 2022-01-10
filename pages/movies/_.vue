@@ -31,12 +31,12 @@ background-position: 100% 100% ;
 				<li v-for="genre in movie.genres" :key=genre.id class="ml-2">
 					{{genre.name}}
 				</li>
-				
+				<!-- <div class="rounded-full p-2 h-8 w-8 m-2 text-white font-bold ml-auto flex items-center justify-center border border-green bg-green ">{{ movie.vote_average }}</div> -->
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Оценка Пользователей:' en ='Vote Average:'/>{{ movie.vote_average }}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Язык Оригинала:' en ='Original Language:'/> {{movie.original_language}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Статус:' en ='Status:'/> {{movie.status}}</li>
 				<li class="mb-2"><span-ru-en class="font-medium" ru='Дата релиза:' en ='Release Date:'/> {{movie.release_date}}</li>
-				<li class="mb-2" v-if="!!movie.belongs_to_collection"><span-ru-en class="font-medium" ru='Входит в коллекцию:' en ='Collection:'/><NuxtLink class="border-b border-green" :to="`/collection/${movie.belongs_to_collection.id}`">{{movie.belongs_to_collection.name}}</NuxtLink></li>
+				<li class="mb-2" v-if="!!movie.belongs_to_collection"><span-ru-en class="font-medium" ru='Входит в коллекцию:' en ='Collection:'/><NuxtLink class="border border-green bg-green-light p-1 rounded-md" :to="`/collection/${movie.belongs_to_collection.id}`">{{movie.belongs_to_collection.name}}</NuxtLink></li>
 			</ul>
 
 		</div>
