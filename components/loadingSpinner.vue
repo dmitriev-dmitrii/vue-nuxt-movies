@@ -1,5 +1,5 @@
 <template>
-<div class="inline-flex justify-center items-center"> <div class="my-spiner mr-1 "></div><slot></slot></div>
+<div class="flex justify-center items-center"> <div class="my-spiner mr-1 "></div><slot></slot></div>
 </template>
 
 <script>

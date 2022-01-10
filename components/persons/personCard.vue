@@ -4,7 +4,7 @@
 		<div  class=" rounded-lg border border-gray flex flex-col justify-between shadow overflow-hidden hover:border-green  hover:bg-green-light transition ease-in-out ">
 			<NuxtLink  :to="`/persons/person/${person.id}`">
 			<div class="flex justify-between">
-				<defalutImage :type="'person'" :src="`https://image.tmdb.org/t/p/w300/${person.profile_path}`" :alt="`${person.name}`"  class=" h-52 w-36  overflow-hidden shadow-md  rounded-lg "/>
+				<defalutImage :type="'person'" :src="`https://image.tmdb.org/t/p/w300/${person.profile_path}`" :alt="`${person.name}`"  class=" h-52 w-36 overflow-hidden shadow-md  rounded-lg "/>
 
 				<div class="flex flex-col justify-between  p-2 ">
 					<h2 class="text-xl  font-bold  sm:text-right ">{{ splitFullName(person.name).firstName }} <br> {{splitFullName(person.name).lastName}} </h2>

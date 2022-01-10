@@ -16,10 +16,10 @@
 
 				<movie-card v-for="movie in movieType.moviesList" :key="movie.id" :movie='movie'/>
 
-				<div class=" rounded-lg h-58 border border-gray font-bold  overflow-hidden flex justify-center items-center flex-col text-3xl"
+				<div class=" rounded-lg  border border-gray font-bold  overflow-hidden flex justify-center items-center flex-col text-3xl hover:bg-green-light transition ease-in-out  "
 					:class="{hidden : movieType.pagesLoadedCounter == movieType.totalPages}">
-						<button v-if="!movieCardIsloading" class="flex justify-center items-center flex-col h-58  h-full w-full font-bold text-green hover:shadow-inner" @click="loadMoreData (index)" > <nuxtIcon></nuxtIcon>  load <br> More   </button>
-						<span v-else class="flex justify-center items-center flex-col h-full w-full h-58 "><loadingSpinner  />Loading...</span>
+						<button v-if="!movieCardIsloading" class="flex justify-center items-center flex-col   h-full w-full font-bold text-green hover:shadow-inner" @click="loadMoreData (index)" > <nuxtIcon></nuxtIcon>  load <br> More   </button>
+						<span v-else class="flex justify-center items-center flex-col h-full w-full  "><loadingSpinner  />Loading...</span>
 				</div>
 			</div>
 		</div>

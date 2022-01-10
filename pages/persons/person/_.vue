@@ -88,9 +88,17 @@ export default {
 
 <style>
 .person__avatar{
+  width: 100%;
+  height:100% ;
 
+  min-height: 150px;
   max-height: 350px;
-  max-width: 300px;
+  max-width: 250px;
 
+}
+@media (min-width: 575.98px){ 
+.person__avatar{
+  height: 350px;
+    }
 }
 </style>

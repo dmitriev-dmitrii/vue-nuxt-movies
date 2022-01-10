@@ -25,11 +25,11 @@ transform: rotate(45deg);
 content:'';
 display:block;
 height:.15em ;
-width: 80%;
+width: 90%;
 
 position: absolute;
 transform: translateY(-50%);
-left: 100%;
+left: 110%;
 top: 50%;
 
 background-color: #00DC82;

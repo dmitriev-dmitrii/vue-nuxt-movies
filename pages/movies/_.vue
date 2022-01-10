@@ -40,7 +40,7 @@ background-position: 100% 100% ;
 			</ul>
 
 		</div>
-			<defalutImage :type="'person'" :srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`" :src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"   :alt="`${movie.title}`"   class="movie__avatar border-b border-gray w-full max-w-xs  overflow-hidden  rounded-lg" />
+			<defalutImage :type="'movie'" :srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`" :src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"   :alt="`${movie.title}`"   class="movie__avatar border-b border-gray w-full max-w-xs  overflow-hidden  rounded-lg shadow-md" />
 	</div>
 
 <movie-video   :id='movie.id' />
