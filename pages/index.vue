@@ -1,5 +1,5 @@
 <template>
-this page not redy
+
 </template>
 
 <script>
