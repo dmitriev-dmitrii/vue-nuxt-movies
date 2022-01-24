@@ -1,7 +1,7 @@
 <template>
-  <div >
+  <div class="layout">
     <TheHeader />
-    <main class="max-w-7xl m-auto p-2 sm:p-4">
+    <main >
       <nuxt />
     </main>
     <TheFooter />
@@ -18,5 +18,14 @@ export default {
 
 <style>
 
+.layout{
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 </style>

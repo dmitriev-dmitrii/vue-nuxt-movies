@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="w-full max-w-7xl p-2 m-auto">
     <div class="flex sm:flex-row-reverse sm:justify-end sm:flex-nowrap mb-4">
     <div class="flex flex-col self-start w-full pr-2 sm:p-4 sm:pt-0">
         <h1

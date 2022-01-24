@@ -1,24 +1,26 @@
 
 <template>
-<header class="border-b border-gray">
-  <div class="max-w-7xl m-auto p-2 sm:p-4">
-    <NuxtLink to="/" class="flex items-center font-bold">
-        Nuxt-Movies
-        <nuxtIcon></nuxtIcon>
+<header class="border-b border-gray w-full  pb-2 pt-2">
+
+  <div class="max-w-7xl p-2 m-auto ">
+
+    <NuxtLink to="/" class=" font-bold border-solid border-b-2 border-transparent hover:border-green  mb-2 mt-2 inline-flex items-center max-w-full"  >
+        Nuxt-Movies   <nuxtIcon class=" "></nuxtIcon>
     </NuxtLink>
+
     <nav>
-      <ul class="flex flex-wrap ">
+      <ul class="flex flex-wrap items-center ">
         <li :class=navLiStyles >
-          <NuxtLink to="/movies" >
-          movies
+          <NuxtLink to="/movies"  class="border-solid border-b-2 border-transparent hover:border-green  mb-2 mt-2">
+              movies
           </NuxtLink>
         </li>
         <li :class=navLiStyles  >
-          <NuxtLink to="/persons/" >
-          persons
+          <NuxtLink to="/persons/" class="border-solid border-b-2 border-transparent hover:border-green   mb-2 mt-2">
+              persons
           </NuxtLink>
         </li>
-        <li  class="w-full sm:max-w-lg sm:ml-2 md:ml-auto" >
+        <li  class="w-full m-auto  max-w-lg  md:m-1 md:ml-auto" >
           <searchForm/>
         </li>
 

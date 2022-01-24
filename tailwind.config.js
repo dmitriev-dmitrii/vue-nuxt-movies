@@ -33,7 +33,13 @@ module.exports = {
 				// light: '#85d7ff',
 				DEFAULT: '#FF0033',
 				// dark: '#009eeb',
+			},
+			transparent:{
+				// light: '#85d7ff',
+				DEFAULT: 'transparent',
+				// dark: '#009eeb',
 			}
+
 		}
 	},
 

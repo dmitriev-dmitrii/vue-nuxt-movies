@@ -1,20 +1,19 @@
 <template>
 
-<div >
+<div class="w-full max-w-7xl p-2 m-auto">
 	<div class=" rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10">
 <div class="my-bg rounded-lg overflow-hidden  hidden xl:block"
 :style="`
-background: linear-gradient(to right ,rgba(255, 255, 255, 1)40% , rgba(255, 255, 255, 0.9)45%,  rgba(255, 255, 255, 0.0)60% ), no-repeat  url(https://image.tmdb.org//t/p/original/${collection.backdrop_path}) ;
-position: absolute;
-width: 100%;
-height: 100%;
-left: 0;
-
-top: 0;
-z-index: -1;
-background-size: auto 100% ;
-background-position: 100% 100% ;
-`">
+    background: linear-gradient(to right ,rgba(255, 255, 255, 1)40% , rgba(255, 255, 255, 0.9)45%,  rgba(255, 255, 255, 0.0)60% ), no-repeat  url(https://image.tmdb.org//t/p/original/${collection.backdrop_path}) ;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background-size: auto 100% ;
+    background-position: 100% 100% ;
+    `">
 </div>
 
 		<div class=" txt-shadow flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
