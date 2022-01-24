@@ -2,10 +2,10 @@
 <template>
 
   <form class="my-search-form flex items-center relative  rounded-md  p-0 shadow w-full "  @submit.prevent="deleayRequestOnInput">
-    <input v-model="searchInputValue" @input="deleayRequestOnInput" type="text" class="w-full p-4 pl-2 font-medium h-0  border border-gray rounded-bl-md rounded-tl-md focus:bg-green-light hover:bg-green-light focus:border-green  focus:outline-none">
+    <input v-model="searchInputValue" @input="deleayRequestOnInput" @focus="inputFocused = true" @blur="inputFocused = false"  type="text" class="w-full p-4 pl-2 font-medium h-0  border border-gray rounded-bl-md rounded-tl-md focus:bg-green-light hover:bg-green-light focus:border-green  focus:outline-none">
     
     <button  class=" h-0 py-4 pl-2 pr-2.5 border border-gray border-l-0 rounded-br-md rounded-tr-md flex items-center justify-center focus:bg-green-light hover:bg-green-light" type="submit"><searchIcon/></button>
-    <ul   class="ul-search-result text-gray-dark absolute w-full  bg-white border border-gray border-t-0 rounded-bl-md rounded-br-md  shadow ">
+    <ul :class="{'active': inputFocused }"  class="ul-search-result text-gray-dark absolute w-full  bg-white border border-gray border-t-0 rounded-bl-md rounded-br-md  shadow ">
       <li v-if="loading" :class=searchResultCardStyles ><loadingSpinner>loading...</loadingSpinner></li>
       <li  v-for="item in searchResultArray" :key=item.id :class=searchResultCardStyles> <NuxtLink    :to="`${routerLinkUrl(item)}`"  class="block w-full flex" >{{ item.title || item.name }} <span class="ml-auto block font-normal italic text-right pl-2">{{item.media_type}}</span> </NuxtLink></li>
     </ul>
@@ -27,6 +27,7 @@ data:  () =>{
       searchResultArray:[],
       timeOutSearchReqest:false,
       loading:false,
+      inputFocused:false,
       searchInputValue:''
     }
   },
@@ -65,6 +66,9 @@ data:  () =>{
       , 
       1000)
     },
+    //     inputFocused : function () {
+
+    // },
 
     // redirectToSearchPage: function () {
     //     this.$router.push({path: `/search/${this.searchInputValue}`});
@@ -80,20 +84,22 @@ data:  () =>{
 
 <style>
 .ul-search-result{
-  z-index: 7777;
+  z-index: -1;
   left: 0;
   top: 100%;
   max-height: 50vh;
   overflow-y: scroll;
   opacity: 0;
-  user-select: none;
-  pointer-events: none;
   transition: all .3s ease;
-
 }
-.my-search-form:focus-within.my-search-form .ul-search-result{
+/* .my-search-form:focus-within.my-search-form .ul-search-result{ 
   user-select: auto;
   pointer-events: auto;
+  opacity: 1;
+} */
+
+.ul-search-result.active{
+  z-index:99;
   opacity: 1;
 }
 
