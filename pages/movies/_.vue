@@ -1,6 +1,6 @@
 <template>
 
-<div class="w-full max-w-7xl p-2 m-auto">
+<div class="">
 	<div class=" rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10">
 <div class="my-bg rounded-lg overflow-hidden  hidden xl:block"
 :style="`
@@ -18,7 +18,7 @@
 
 		<div class=" txt-shadow flex flex-col justify-center items-center p-4 w-full md:pl-8 md:justify-start md:items-start  ">
 			
-			<h1  :title="movie.name" class="  font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs "> 
+			<h1  :title="movie.name" class="  font-bold text-3xl md:text-4xl lg:text-5xl font-heading mb-4 xl:max-w-xs capitalize"> 
 				<span v-if="!!movie.name" >{{ movie.name }}</span>
 				<span v-else > {{ movie.title }}</span>
 			</h1>

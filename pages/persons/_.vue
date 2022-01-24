@@ -1,6 +1,6 @@
 <template>
 
-<div class="w-full max-w-7xl p-2 m-auto" style="content-visibility:auto;">
+<div class="" style="content-visibility:auto;">
 
 	<h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading ">
 		<span-ru-en ru="Популярные люди" en="Popular People"/>

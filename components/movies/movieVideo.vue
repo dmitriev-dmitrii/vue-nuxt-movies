@@ -8,17 +8,14 @@
 		<span-ru-en v-if="movieError" class="text-red" ru="Трейлер Отсутвует" en="Trailer is Missing"/>
 	</button>
 
-	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2">
+	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2 flex flex-col-reverse md:flex-col">
 	<div class="w-full max-w-7xl flex justify-centr sm:justify-end">
-		<button @click="closePlayer" class="w-full  max-w-xs py-2  rounded-md border text-green cursor-pointer font-medium border-green "> close Player </button>
+		<button @click="closePlayer" class="w-full   py-2  rounded-md border text-green cursor-pointer font-medium border-green "> close Player </button>
 	</div>
 	<div id="youtube-player" class="rounded-md max-w-7xl">
 	
 	</div>
 	</div>
-
-
-	
 
 </div>
 
@@ -69,8 +66,6 @@ methods	: {
 			// Final Trailer
 			let youTubePlayerKey ;
 
-			
-
 			const trailerObj = () => {
 
 				for (const item of this.movie.videos) {
@@ -94,9 +89,6 @@ methods	: {
 			this.erorTrailer();
 			}
 		})
-
-
-
 
 	},
 
@@ -128,26 +120,20 @@ z-index: 999999;
 top:0;
 left: 0;
 
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-
 overflow: hidden;
 
 background-color: rgba(22, 22, 22, 1);
 width: 100vw;
-height: 100vh;
+height:100%;
 }
 
 #youtube-player{
 	overflow:hidden;
 	width: 100%;
 	height: 100%;
+	min-height: 300px;
 	max-height: 555px;
 }
-
-
 
 .hidden-player{
 display: none;

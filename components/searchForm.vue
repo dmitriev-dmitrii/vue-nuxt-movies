@@ -66,18 +66,12 @@ data:  () =>{
       , 
       1000)
     },
-    //     inputFocused : function () {
-
-    // },
 
     // redirectToSearchPage: function () {
     //     this.$router.push({path: `/search/${this.searchInputValue}`});
     // },
 
-
   },
-
-
 
 }
 </script>
@@ -92,31 +86,10 @@ data:  () =>{
   opacity: 0;
   transition: all .3s ease;
 }
-/* .my-search-form:focus-within.my-search-form .ul-search-result{ 
-  user-select: auto;
-  pointer-events: auto;
-  opacity: 1;
-} */
 
 .ul-search-result.active{
   z-index:99;
   opacity: 1;
 }
-
-/* .ul-search-result:nth-child(n){
-  transition: all .2s linear;
-	animation: li-in .3s ease ;
-} */
-
-/* @keyframes li-in {
-	0%   { 
-    transform: translateY(-2em);
-    opacity: 0;
-	}
-	100%  { 
-		transform: translateY(0) ;
-    opacity: 1;
-	}
-} */
 
 </style>

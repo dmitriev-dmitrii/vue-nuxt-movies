@@ -33,6 +33,7 @@ if ( arrLength > 7 ) {
 },
 
 generateItemKey:function( someNumber , id ) {
+  if (!someNumber) { someNumber = Date.now()}
 return someNumber + id
 }
 

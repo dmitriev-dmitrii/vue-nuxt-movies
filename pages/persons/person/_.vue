@@ -1,9 +1,9 @@
 <template>
-<div class="w-full max-w-7xl p-2 m-auto">
+<div class="">
     <div class="flex sm:flex-row-reverse sm:justify-end sm:flex-nowrap mb-4">
     <div class="flex flex-col self-start w-full pr-2 sm:p-4 sm:pt-0">
         <h1
-        class=" font-bold text-2xl md:text-2xl lg:text-6xl font-heading mb-2 lg:mb-4 ">
+        class=" font-bold text-2xl md:text-2xl lg:text-6xl font-heading mb-2 lg:mb-4 capitalize">
         {{ person.name }}
         </h1>
         <h2 class="mb-2 font-semibold">{{ person.known_for_department }}</h2>

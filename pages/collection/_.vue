@@ -1,7 +1,7 @@
 <template>
 
-<div class="w-full max-w-7xl p-2 m-auto">
-	<div class=" rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10">
+<div class="">
+	<div class="rounded-lg overflow-hidden mb-6  flex  flex-col items-center  justify-between md:flex-row-reverse md:items-stretch relative z-10">
 <div class="my-bg rounded-lg overflow-hidden  hidden xl:block"
 :style="`
     background: linear-gradient(to right ,rgba(255, 255, 255, 1)40% , rgba(255, 255, 255, 0.9)45%,  rgba(255, 255, 255, 0.0)60% ), no-repeat  url(https://image.tmdb.org//t/p/original/${collection.backdrop_path}) ;
