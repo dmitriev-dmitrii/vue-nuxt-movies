@@ -4,8 +4,8 @@
 
   <div class="max-w-7xl p-2 m-auto">
 
-    <NuxtLink to="/" class=" font-bold border-solid border-b-2 border-transparent hover:border-green  mb-2 mt-2 inline-flex items-center max-w-full"  >
-        Nuxt-Movies   <nuxtIcon class=" "></nuxtIcon>
+    <NuxtLink  to="/" class=" font-bold border-solid border-b-2 border-transparent hover:border-green  mb-2 mt-2 inline-flex items-center max-w-full"  >
+        Nuxt-Movies   <nuxtIcon></nuxtIcon>
     </NuxtLink>
 
     <nav>
