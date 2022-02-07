@@ -2,13 +2,13 @@
 <template>
 <div @keyup.esc="closePlayer">
 	
-	<button  @click="getVideo" :disabled=!!movieError  class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium  hover:border-green  hover:bg-green-light transition ease-in-out" :class="{ 'border-red pointer-events-none opacity-50': movieError }">
+	<button  @click="getVideo" @keyup.esc="closePlayer" :disabled=!!movieError  class="w-full  max-w-lg  py-2 mr-1 mb-1 sm:mr-2 sm:mb-2 rounded-md border border-gray cursor-pointer font-medium  hover:border-green  hover:bg-green-light transition ease-in-out" :class="{ 'border-red pointer-events-none opacity-50': movieError }">
 		<span-ru-en v-if="!loading&!movieError" ru="Смотреть Трейлер" en="Play Trailer"/>
 		<loadingSpinner v-if="loading">loading...</loadingSpinner>
 		<span-ru-en v-if="movieError" class="text-red" ru="Трейлер Отсутвует" en="Trailer is Missing"/>
 	</button>
 
-	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" class="youtube-player__wrapper p-2 flex flex-col-reverse md:flex-col">
+	<div v-show="!!movie.videos"  :class="{ 'hidden-player' : !openPlayer}" @click="closePlayer" class="youtube-player__wrapper p-2 flex flex-col-reverse md:flex-col items-center justify-center">
 	<div class="w-full max-w-7xl flex justify-centr sm:justify-end">
 		<button @click="closePlayer" class="w-full   py-2  rounded-md border text-green cursor-pointer font-medium border-green "> close Player </button>
 	</div>
