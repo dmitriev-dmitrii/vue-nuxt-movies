@@ -16,8 +16,13 @@
           </NuxtLink>
         </li>
         <li :class=navLiStyles  >
+          <NuxtLink to="/serials/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
+              serials
+          </NuxtLink>
+        </li>
+        <li :class=navLiStyles  >
           <NuxtLink to="/persons/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
-              persons
+            persons
           </NuxtLink>
         </li>
         <li  class="w-full m-auto   mb-2 mt-2 max-w-lg  md:m-1 md:ml-auto" >

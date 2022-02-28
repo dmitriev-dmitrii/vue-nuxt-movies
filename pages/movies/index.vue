@@ -61,15 +61,6 @@ methods: {
 
 	},
 	
-// validate ({route}) {
-//     // Must be a number
-// 	    const currentPage = route.params.pathMatch;
-// 		// возвращает цифру в url после  persons/1 или ничего если url persons/  страница откроется, 
-// 		// если в url лишние символы кроме цифр кидаем на 404
-// 		return /^\d+$/.test(currentPage)||!currentPage;
-//     },
-
-
 
 }
 </script>

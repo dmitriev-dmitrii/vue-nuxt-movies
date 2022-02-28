@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <TheHeader />
-    <main class="max-w-7xl p-2 m-auto w-full">
+    <main class="max-w-7xl p-2 m-auto h-full w-full">
       <nuxt />
     </main>
     <TheFooter />

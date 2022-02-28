@@ -9,5 +9,5 @@ export const getters = {
 		return state.language;
 	},
 	
-	}
-	
+}
+
