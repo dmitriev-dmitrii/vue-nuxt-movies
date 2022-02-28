@@ -8,7 +8,7 @@
     	<NuxtLink :to="`/persons/person/${person.id}`"
       class="w-48 mr-2 mt-4 mb-4 rounded-lg border border-gray overflow-hidden inline-block  hover:border-green  hover:bg-green-light transition ease-in-out"
       v-for="person in personsList" :key="generateItemKey(person.credit_id,person.id)">
-      <defalutImage :type="'person'" :src="`https://image.tmdb.org//t/p/w150_and_h225_bestv2/${person.profile_path}`"  :alt="`${person.title}`"  class="h-64 w-full border-b border-gray" />
+      <defalutImage :type="'person'" :src="`https://image.tmdb.org//t/p/w300_and_h450_bestv2/${person.profile_path}`"  :alt="`${person.title}`"  class="h-64 w-full border-b border-gray" />
 
     	<h4  :title="person.name" class="font-medium  truncate text-center p-1"> {{ person.name }}</h4>
       <h4 v-if="!!person.character" :title="person.character" class="font-medium  truncate text-center p-1 text-green"> {{ person.character }}</h4>
