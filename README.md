@@ -1,4 +1,4 @@
-# test
+# Nuxt Movies based on Api : https://developers.themoviedb.org/3
 
 ## Build Setup
 
