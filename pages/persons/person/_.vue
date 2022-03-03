@@ -28,10 +28,10 @@
 
     </div>
 
-<detailsTag  v-if="!!person.biography">
+<appDetails  v-if="!!person.biography">
 	<span-ru-en slot="summary" ru="Биография" en="Biography" />
 	{{ person.biography }}
-</detailsTag>
+</appDetails>
 
 <div class="pt-8" v-if="person.moviesList.cast.length > 0">
     <h3  class="font-medium  text-md ">  <span-ru-en ru="Известные Работы" en="Known For " /> </h3>
@@ -48,9 +48,9 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import appDetails from "@/components/ui/app-details";
 export default {
-
+components:{appDetails},
   methods: {
     splitFullName: (name) => {
       let [firstName, ...lastName] = name.split(" ");
