@@ -73,7 +73,7 @@ components:{movieVideo},
 	computed : {
 		...mapGetters( 
 			{
-				movie:'movie/getMovie',
+				movie:'movies/page/getMovie',
 			},
 
 		),
@@ -91,7 +91,7 @@ validate ({route}) {
 
 	async fetch (context) {
 		const id = context.route.params.pathMatch ;
-        await context.store.dispatch('movie/axiosMovie', id );
+        await context.store.dispatch('movies/page/axiosMovie', id );
 	},
 
 }

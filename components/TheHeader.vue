@@ -15,11 +15,11 @@
               movies
           </NuxtLink>
         </li>
-        <li :class=navLiStyles  >
-          <NuxtLink to="/serials/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
-              serials
+        <!-- <li :class=navLiStyles  >
+          <NuxtLink to="/tv/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
+            tv
           </NuxtLink>
-        </li>
+        </li> -->
         <li :class=navLiStyles  >
           <NuxtLink to="/persons/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
             persons

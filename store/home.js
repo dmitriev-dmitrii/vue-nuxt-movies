@@ -46,7 +46,7 @@ export const actions = {
         `${api.url}/trending/person/day?${api.key}&language=${context.rootState.language}`
       );
       if (request.status == 200) {
-        console.log(request.data.results)
+        // console.log(request.data.results)
         context.commit('mutatePersons', request.data.results);
       }
     },
@@ -55,7 +55,7 @@ export const actions = {
         `${api.url}/trending/tv/day?${api.key}&language=${context.rootState.language}`
       );
       if (request.status == 200) {
-        console.log(request.data.results)
+        // console.log(request.data.results)
         context.commit('mutateSerials', request.data.results);
       }
     }

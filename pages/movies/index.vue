@@ -32,23 +32,23 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import movieCard from '../../components/movies/movieCard.vue';
+import movieCard from '@/components/movies/movieCard.vue';  
 
 export default {
-  components: { movieCard },
+	components: { movieCard },
 
 	computed : {
 		...mapGetters( 
 			{
-				currentMoviesType:'movies/getCurrentMoviesType',
-				movieCardIsloading:'movies/getMovieCardIsLoading'
+				currentMoviesType:'movies/list/getCurrentMoviesType',
+				movieCardIsloading:'movies/list/getMovieCardIsLoading'
 			}
 		),
 	},
 
 methods: {
 	loadMoreData (movieTypeIndex) {
-    this.$store.dispatch('movies/axiosMovies', movieTypeIndex )
+    this.$store.dispatch('movies/list/axiosMovies', movieTypeIndex )
 }
 
 },
@@ -56,7 +56,7 @@ methods: {
 	async fetch (context) {
 
 		for (let index = 0; index < context.store.state.movies.moviesTypes.length; index++) {
-			await context.store.dispatch('movies/axiosMovies', [index] )
+			await context.store.dispatch('movies/list/axiosMovies', [index] )
 		}
 
 	},

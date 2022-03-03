@@ -37,7 +37,7 @@ data(){
 computed : {
 		...mapGetters( 
 		{
-			movie:'movie/getMovie',
+			movie:'movies/page/getMovie',
 		},
 	),
 	},
@@ -58,7 +58,7 @@ methods	: {
 		}
 
 		this.loading=true;
-		this.$store.dispatch('movie/axiosMovieVideos', this.id )
+		this.$store.dispatch('movies/page/axiosMovieVideos', this.id )
 		.then(() => {
 			try
 			{

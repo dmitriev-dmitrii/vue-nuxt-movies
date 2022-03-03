@@ -8,17 +8,17 @@
 	</h1>
 </div >
 
-<div class="pt-8">
-    <h3  class="font-medium  text-3xl ">  <span-ru-en ru="Популярные Сериалы" en="Popular Serials " /> </h3>
+<!-- <div class="pt-8">
+    <h3  class="font-medium  text-3xl ">  <span-ru-en ru="Популярные Сериалы" en="What's Popular Serial Now " /> </h3>
     <hr class="text-green">
-    <small-movies-list   :moviesList="serials" />
-</div>
+    <small-movies-list   :moviesList="tv" />
+</div> -->
 
 <div class="pt-8" >
   <h3  class="font-medium  text-3xl ">  <span-ru-en ru="Популярные Персоны" en="Popular Persons " /> </h3>
   <hr class="text-green">
 	<small-persons-list :personsList="persons"></small-persons-list>
-</div> 
+</div>
 
 <div class="pt-8">
   <h3  class="font-medium  text-3xl ">  <span-ru-en ru="Популярные фильмы" en="Popular Movies " /> </h3>
