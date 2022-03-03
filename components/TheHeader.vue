@@ -4,7 +4,7 @@
 
   <div class="max-w-7xl p-2 m-auto">
 
-    <NuxtLink  to="/" class=" font-bold border-solid border-b-2 border-transparent hover:border-green  mb-2 mt-2 inline-flex items-center max-w-full"  >
+    <NuxtLink  to="/" exact class=" font-bold border-solid border-b-2 border-transparent hover:border-green  mb-2 mt-2 inline-flex items-center max-w-full"  >
         Nuxt-Movies   <nuxtIcon></nuxtIcon>
     </NuxtLink>
 
@@ -54,11 +54,9 @@ data:  () =>{
 
 <style >
 
-.nuxt-link-exact-active {
-  border-bottom: 2px #00DC82 solid;
+.nuxt-link-active {
   color: #00DC82 ;
-  text-shadow: 0 0 1px black;
-  -webkit-text-stroke:.5px black;
+  font-weight: bold;
 }
 
 </style>
