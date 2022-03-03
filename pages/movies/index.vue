@@ -18,8 +18,8 @@
 
 				<div class=" rounded-lg  border border-gray font-bold  overflow-hidden flex justify-center items-center flex-col text-3xl hover:bg-green-light transition ease-in-out  "
 					:class="{hidden : movieType.pagesLoadedCounter == movieType.totalPages}">
-						<button v-if="!movieCardIsloading" class="flex justify-center items-center flex-col   h-full w-full font-bold text-green hover:shadow-inner" @click="loadMoreData (index)" > <nuxtIcon></nuxtIcon>  load <br> More   </button>
-						<span v-else class="flex justify-center items-center flex-col h-full w-full  "><loadingSpinner  />Loading...</span>
+						<button v-if="!movieCardIsloading" :class="loadMoreBtnStyles" @click="loadMoreData (index)" > <nuxtIcon></nuxtIcon>  load <br> More   </button>
+						<span v-else :class="loadMoreBtnStyles"> <loadingSpinner /> Loading...</span>
 				</div>
 			</div>
 		</div>
@@ -36,7 +36,11 @@ import movieCard from '@/components/movies/movieCard.vue';
 
 export default {
 	components: { movieCard },
-
+	data:  () =>{
+    return {
+		loadMoreBtnStyles: ['flex' ,'justify-center', 'items-center ','flex-col','h-full',' w-full',' p-4','font-bold', 'text-green', 'hover:shadow-inner']
+		}
+	},
 	computed : {
 		...mapGetters( 
 			{

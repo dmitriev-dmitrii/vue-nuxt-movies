@@ -17,7 +17,7 @@ export default {
 	computed : {
 		...mapGetters( 
 			{
-				currentMoviesType:'movies/getCurrentMoviesType',
+				currentMoviesType:'movies/list/getCurrentMoviesType',
 			}
 		),
 	},
@@ -33,7 +33,7 @@ props: {
       return string.replace(/_/gi, ' ');
     },
     updateMoviesType (e) {
-    this.$store.commit('movies/mutateCurrentMoviesType', e.target.value)
+    this.$store.commit('movies/list/mutateCurrentMoviesType', e.target.value)
   },
   },
 
