@@ -42,7 +42,7 @@
 			<defalutImage :type="'movie'" :srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`" :src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"   :alt="`${movie.title}`"   class="movie__avatar border-b border-gray w-full max-w-xs  overflow-hidden  rounded-lg shadow-md" />
 	</div>
 
-<movie-video   :id='movie.id' />
+<movie-player   :id='movie.id' />
 
 <appDetails >
 	<span-ru-en slot="summary" ru="Описание" en="Overview" />
@@ -68,6 +68,7 @@
 import { mapGetters } from 'vuex';
 import moviePlayer from '@/components/movies/movie-player';
 import appDetails from "@/components/ui/app-details";
+
 
 export default {
 components:{moviePlayer,appDetails},
