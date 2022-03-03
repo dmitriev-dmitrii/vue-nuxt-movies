@@ -32,10 +32,12 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import movieCard from '@/components/movies/movieCard.vue';  
+import movieCard from '@/components/movies/movie-card.vue';  
+import nuxtIcon from '@/components/icons/nuxt-icon'
+import loadingSpinner from "@/components/ui/loading-spinner";
 
 export default {
-	components: { movieCard },
+	components: { movieCard , nuxtIcon,loadingSpinner},
 	data:  () =>{
     return {
 		loadMoreBtnStyles: ['flex' ,'justify-center', 'items-center ','flex-col','h-full',' w-full',' p-4','font-bold', 'text-green', 'hover:shadow-inner']

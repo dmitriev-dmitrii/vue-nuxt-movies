@@ -10,7 +10,9 @@
 </template>
 
 <script>
+import loadingSpinner from "@/components/ui/loading-spinner";
 export default {
+components:{loadingSpinner},
 data() {
         return {
         loading: true,

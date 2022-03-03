@@ -48,6 +48,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+
   computed: {
     ...mapGetters({
       collection: "collection/getCollection",
@@ -69,7 +70,7 @@ export default {
 </script>
 
 
-<style >
+<style scoped>
 .movie__avatar {
 	min-height:480px;
 }
@@ -97,33 +98,3 @@ opacity: 0;
 }
 
 </style>
-
-
-
-    // {"id":558216,"name":"Venom Collection","overview":"A frustrated journalist
-    // named Eddie Brock and a carnivorous black symbiote unite to become the
-    // monstrous antihero Venom and battle both good and evil alike. Based on the
-    // Marvel Comics
-    // character.",
-    "poster_path":"/670x9sf0Ru8y6ezBggmYudx61yB.jpg",
-    "backdrop_path":"/rhLspFB1B8ZCkWEHFYmc3NKagzq.jpg",
-    "parts":[
-      {"adult":false,
-    "backdrop_path":"/vIgyYkXkg6NC2whRbYjBD7eb3Er.jpg",
-    "genre_ids":[878,28,12],"id":580489,
-    "title":"Venom:
-    // Let There Be Carnage","original_language":"en","original_title":"Venom: Let
-    // There Be Carnage","overview":"After finding a host body in investigative
-    // reporter Eddie Brock, the alien symbiote must face a new enemy, Carnage, the
-    // alter ego of serial killer Cletus
-    // Kasady.","popularity":4530.241,"poster_path":"/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg","release_date":"2021-09-30","video":false,"vote_average":7.154,"vote_count":5667},{"adult":false,"backdrop_path":"/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg","genre_ids":[878,28],"id":335983,"title":"Venom","original_language":"en","original_title":"Venom","overview":"Investigative
-    // journalist Eddie Brock attempts a comeback following a scandal, but
-    // accidentally becomes the host of Venom, a violent, super powerful alien
-    // symbiote. Soon, he must rely on his newfound powers to protect the world
-    // from a shadowy organization looking for a symbiote of their
-    // own.","popularity":403.328,"poster_path":"/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg","release_date":"2018-09-28","video":false,"vote_average":6.853,"vote_count":12687},{"adult":false,"backdrop_path":null,"genre_ids":[878,28,12],"id":912649,"title":"Venom
-    // 3","original_language":"en","original_title":"Venom
-    // 3","overview":"","popularity":257.592,"poster_path":"/p2iubH4NpXpIDAWCuITTuJhmde5.jpg","release_date":"","video":false,"vote_average":0,"vote_count":0}]}
-
-
-

@@ -1,4 +1,5 @@
 export default {
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-movies',
@@ -15,6 +16,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
 
+  },
+  loading: {
+    color: '#00DC82',
+    height: '3px'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

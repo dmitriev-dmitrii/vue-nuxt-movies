@@ -13,23 +13,24 @@
 		<person-card :person='person' v-for="person in persons" :key="person.id"/>
 	</div>
 
-<Pagination   :totalPages="pagination" />
+<pagination   :totalPages="pagination" />
 
 </div>
 
 </template>
 
 <script>
-
+import pagination from '@/components/ui/pagination'
+import personCard from '@/components/persons/person-card'
 import { mapGetters } from 'vuex';
-import personCard from '@/components/persons/personCard'
+
 export default {
-components : { personCard },
+components : { personCard,pagination },
 	computed : {
 		...mapGetters( 
 			{
-				persons:'persons/getPersons',
-				pagination:'persons/getPagination',
+				persons:'persons/list/getPersons',
+				pagination:'persons/list/getPagination',
 			}
 		),
 		
@@ -37,14 +38,14 @@ components : { personCard },
 	
 validate ({route}) {
     // Must be a number
-	    const currentPage = route.params.pathMatch;
+		const currentPage = route.params.pathMatch;
 		// возвращает цифру в url после  persons/1 или ничего если url persons/  страница откроется, 
 		// если в url лишние символы кроме цифр кидаем на 404
 		return /^\d+$/.test(currentPage)||!currentPage;
     },
 
 	async fetch (context) {
-        await context.store.dispatch('persons/axiosPersons', context.route.params.pathMatch )
+        await context.store.dispatch('persons/list/axiosPersons', context.route.params.pathMatch )
 	},
 }
 </script>

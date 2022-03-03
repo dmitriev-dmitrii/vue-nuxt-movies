@@ -11,17 +11,17 @@
     <nav>
       <ul class="flex flex-wrap items-center ">
         <li :class=navLiStyles >
-          <NuxtLink to="/movies"  class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
+          <NuxtLink to="/movies"  :class="navLinkStyles">
               movies
           </NuxtLink>
         </li>
         <!-- <li :class=navLiStyles  >
-          <NuxtLink to="/tv/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
+          <NuxtLink to="/tv/" :class="navLinkStyles">
             tv
           </NuxtLink>
         </li> -->
         <li :class=navLiStyles  >
-          <NuxtLink to="/persons/" class="border-solid border-b-2 border-transparent hover:border-green  mb-4 mt-4">
+          <NuxtLink to="/persons/" :class="navLinkStyles">
             persons
           </NuxtLink>
         </li>
@@ -36,18 +36,29 @@
 
 <script>
 
+import nuxtIcon from '@/components/icons/nuxt-icon'
+import searchForm from '@/components/ui/search-form'
 
 export default {
+  
+components: { searchForm,nuxtIcon },
 
 data:  () =>{
     return {
-      navLiStyles: ['mr-2']
+      navLiStyles: ['mr-4'],
+      navLinkStyles: [ 'border-solid ','border-b-2', 'border-transparent','hover:border-green' , 'mb-4', 'mt-4']
     }
   },
 }
 </script>
 
-<style>
+<style >
 
+.nuxt-link-exact-active {
+  border-bottom: 2px #00DC82 solid;
+  color: #00DC82 ;
+  text-shadow: 0 0 1px black;
+  -webkit-text-stroke:.5px black;
+}
 
 </style>

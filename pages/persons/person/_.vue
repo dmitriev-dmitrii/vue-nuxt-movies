@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      person: "person/getPerson",
+      person: "persons/page/getPerson",
     }),
   },
 
@@ -74,11 +74,11 @@ export default {
 
   async fetch(context) {
     await context.store.dispatch(
-      "person/axiosPerson",
+      "persons/page/axiosPerson",
       context.route.params.pathMatch
     );
     await context.store.dispatch(
-      "person/axiosPersonMoviesList",
+      "persons/page/axiosPersonMoviesList",
       context.route.params.pathMatch
     );
 

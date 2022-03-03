@@ -44,10 +44,10 @@
 
 <movie-video   :id='movie.id' />
 
-<detailsTag >
+<appDetails >
 	<span-ru-en slot="summary" ru="Описание" en="Overview" />
 	{{ movie.overview }}
-</detailsTag>
+</appDetails>
 
 <div class="pt-8" v-if="!!movie.credits.cast">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Актёрский состав" en="Acting" /> </h3>
@@ -66,10 +66,11 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import movieVideo from '@/components/movies/movieVideo';
+import moviePlayer from '@/components/movies/movie-player';
+import appDetails from "@/components/ui/app-details";
 
 export default {
-components:{movieVideo},
+components:{moviePlayer,appDetails},
 	computed : {
 		...mapGetters( 
 			{
