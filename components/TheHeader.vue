@@ -57,6 +57,7 @@ data:  () =>{
 .nuxt-link-active {
   color: #00DC82 ;
   font-weight: bold;
+  border-bottom: 2px solid currentColor;
 }
 
 </style>
