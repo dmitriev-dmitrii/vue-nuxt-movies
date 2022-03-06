@@ -8,7 +8,7 @@
           href="https://www.themoviedb.org/">
 
           <tmdbIcon  class="h-8 ml-2"></tmdbIcon>
-          
+
         </a>
       </div>
   </footer>
@@ -19,6 +19,5 @@
 import tmdbIcon from './icons/tmdb-icon.vue'
 export default {
   components:{tmdbIcon}
-  
 }
 </script>

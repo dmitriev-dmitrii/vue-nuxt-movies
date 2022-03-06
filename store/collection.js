@@ -21,17 +21,14 @@ export const mutations = {
 export const actions = {
 
     axiosCollection: async (context,id) => {
-    
-    const request = await axios.get(
-        `${api.url}/collection/${id}?${api.key}&language=${context.rootState.language}&`
-
-    );
-    if (request.status == 200) {
-        // console.log( request.data);
-        // console.log(context);
-        context.commit('mutateCollection', request.data);
-    }
-
+        const request = await axios.get(
+            `${api.url}/collection/${id}?${api.key}&language=${context.rootState.language}&`
+        );
+        if (request.status == 200) {
+            // console.log( request.data);
+            // console.log(context);
+            context.commit('mutateCollection', request.data);
+        }
 },
 
 

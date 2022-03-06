@@ -4,7 +4,7 @@
   <form class="my-search-form flex items-center relative  rounded-md  p-0 shadow w-full "  @submit.prevent="deleayRequestOnInput">
     <input v-model="searchInputValue" @input="deleayRequestOnInput" @focus="inputFocused = true" @blur="inputFocused = false"  type="text" class="w-full p-4 pl-2 font-medium h-0  border border-gray rounded-br-none rounded-tr-none rounded-bl-md rounded-tl-md focus:bg-green-light hover:bg-green-light focus:border-green  focus:outline-none ">
     
-    <button  class=" h-0 py-4 pl-2 pr-2.5 border border-gray border-l-0 rounded-br-md rounded-tr-md flex items-center justify-center focus:bg-green-light hover:bg-green-light" type="submit"><searchIcon/></button>
+    <button  class=" h-0 py-4 pl-2 pr-2.5 border border-gray border-l-0 rounded-br-md rounded-tr-md flex items-center justify-center focus:bg-green-light hover:bg-green-light" type="submit"><searchIcon class="h-6 w-6" /></button>
     
     <ul :class="{'active': inputFocused }"  class="ul-search-result text-gray-dark absolute w-full  bg-white border border-gray border-t-0 rounded-bl-md rounded-br-md  shadow ">
       <li v-if="loading" :class=searchResultCardStyles ><loadingSpinner>loading...</loadingSpinner></li>

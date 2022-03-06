@@ -4,10 +4,12 @@ export const state = () => ({
 })
 
 export const getters = {
-
 	getLanguage: (state)=>{
 		return state.language;
 	},
 	
 }
 
+export const mutations = {
+
+};
