@@ -55,15 +55,15 @@ export default {
     }),
   },
 
-  validate({ route }) {
-    const currentPage = route.params.pathMatch;
-    return /^\d+$/.test(currentPage) || !currentPage;
-  },
+	validate({ params }) {
+    // Must be a number
+    	return /^\d+$/.test(params.id)
+	},
 
   async fetch(context) {
     await context.store.dispatch(
       "collection/axiosCollection",
-      context.route.params.pathMatch
+      context.route.params.id
     );
   },
 };

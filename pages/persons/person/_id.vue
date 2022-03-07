@@ -64,24 +64,15 @@ components:{appDetails},
     }),
   },
 
-  // validate ({route}) {
-  //     // Must be a number
-  // 	    const currentPage = route.params.pathMatch;
-  // 		// возвращает цифру в url после  persons/1 или ничего если url persons/  страница откроется,
-  // 		// если в url лишние символы кроме цифр кидаем на 404
-  // 		return /^\d+$/.test(currentPage)||!currentPage;
-  //     },
+	validate({ params }) {
+    // Must be a number
+      return /^\d+$/.test(params.id)
+	},
 
   async fetch(context) {
-    await context.store.dispatch(
-      "persons/page/axiosPerson",
-      context.route.params.pathMatch
-    );
-    await context.store.dispatch(
-      "persons/page/axiosPersonMoviesList",
-      context.route.params.pathMatch
-    );
-
+    const id = context.route.params.id
+    await context.store.dispatch("persons/page/axiosPerson",id);
+    await context.store.dispatch("persons/page/axiosPersonMoviesList",id);
   },
 };
 </script>

@@ -82,17 +82,13 @@ components:{moviePlayer,appDetails},
 
 	},
 
-
-validate ({route}) {
+	validate({ params }) {
     // Must be a number
-	    const currentPage = route.params.pathMatch;
-		// возвращает цифру в url после  persons/1 или ничего если url persons/  страница откроется, 
-		// если в url лишние символы кроме цифр кидаем на 404
-		return /^\d+$/.test(currentPage)||!currentPage;
-    },
-
+    	return /^\d+$/.test(params.id)
+	}
+	,
 	async fetch (context) {
-		const id = context.route.params.pathMatch ;
+		const id = context.route.params.id ;
         await context.store.dispatch('movies/page/axiosMovie', id );
 	},
 
