@@ -2,54 +2,95 @@ import axios from 'axios';
 import api from "@/api/api";
 
 export const state = () => ({
-    movie:{
-        credits:'',
-        videos:[]
-    },
+	loadingMovieCard:false,
+    currentMoviesType: 'popular',
+    moviesTypes: [
+        {
+            name:'popular',
+            pagesLoadedCounter:1,
+            totalPages:0,
+            moviesList:[]
+        },
+        {
+            name:'top_rated',
+            pagesLoadedCounter:1,
+            totalPages:0,
+            moviesList:[]
+        },
+        {
+            name:'upcoming',
+            pagesLoadedCounter:1,
+            totalPages:0,
+            moviesList:[]
+        },
+        {
+            name:'now_playing',
+            pagesLoadedCounter:1,
+            totalPages:0,
+            moviesList:[]
+        },
+    ],
+
 });
 
 export const getters = {
-getMovie: (state)=>{
-	return state.movie;
+
+    getMovieCardIsLoading: (state)=>{
+        return state.loadingMovieCard;
 },
+getCurrentMoviesType: (state)=>{
+	return state.currentMoviesType;
+},
+
+getMovieListFromType: (state,MovieType)=>{
+
+	return state.currentMoviesType;
+},
+
 };
 
 export const mutations = {
-    mutateMovie: (state, obj) => {
-		state.movie =  obj;
+    mutateCurrentMoviesType: (state , value ) => {
+        state.currentMoviesType = value
+        },
+
+    mutateMoviesData: (state,  payload ) => {
+    // console.log(payload.index);
+    const currentStateObj =  state.moviesTypes[ payload.index ]
+    currentStateObj.moviesList = currentStateObj.moviesList.concat(payload.data);
+    currentStateObj.pagesLoadedCounter++
+    currentStateObj.totalPages=payload.totalPages
 	},
 
-    mutateMovieCredits: (state, obj) => {
-        state.movie.credits = obj;
-	},
-    mutateMovieVideos: (state, arr) => {
-        state.movie.videos = arr;
-	},
+    mutateLoadingMovieCard: (state , value=false ) => {
+        state.loadingMovieCard = value
+        }
 };
 
 export const actions = {
 
-    axiosMovie: async (context,movieId) => {
-    
-    const movieRequest = await axios.get(`${api.url}/tv/${movieId}?${api.key}&language=${context.rootState.language}`);
-    const creditsRequest = await axios.get(`${api.url}/tv/${movieId}/credits?${api.key}&language=${context.rootState.language}`);
-    
-    Promise.all([movieRequest, creditsRequest]).then( requests => {
-        context.commit('mutateMovie',  requests[0].data );
-        context.commit('mutateMovieCredits', requests[1].data );
-    });
+    axiosMovies: async (context, movieTypeIndex=0 ) => {
+    context.commit('mutateLoadingMovieCard', true );
+    const currentStateObj  = context.state.moviesTypes[ movieTypeIndex ];
 
-},
+    if (currentStateObj.pagesLoadedCounter == currentStateObj.totalPages)
+    {  
+        context.commit('mutateLoadingMovieCard', false );
+        return false
+    }
 
-
-
-axiosMovieVideos: async (context,movieId) => {
     const request = await axios.get(
-        `${api.url}/movie/${movieId}/videos?${api.key}&language=${context.rootState.language}`
-        
+        `${api.url}/movie/${currentStateObj .name}?${api.key}&language=${context.rootState.language}&page=${currentStateObj .pagesLoadedCounter}`
     );
     if (request.status == 200) {
-        context.commit('mutateMovieVideos', request.data.results);
+        // console.log(request);
+    const payload={
+            index:movieTypeIndex,
+            data: request.data.results,
+            totalPages:request.total_pages
+    }
+        context.commit('mutateLoadingMovieCard', false );
+        context.commit('mutateMoviesData',  payload);
     }
 },
 };

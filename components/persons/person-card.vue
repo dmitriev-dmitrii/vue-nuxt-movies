@@ -41,7 +41,6 @@ export default {
 	methods:
 {
 splitFullName: (name)=>{
-
 let [firstName,  ...lastName] = name.split(" ");
 lastName=lastName.join(' ');
 return {firstName,lastName}

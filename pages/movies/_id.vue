@@ -42,7 +42,7 @@
 			<defalutImage :type="'movie'" :srcset="`https://image.tmdb.org//t/p/w400/${movie.poster_path}`" :src="`https://image.tmdb.org//t/p/original/${movie.poster_path}`"   :alt="`${movie.title}`"   class="movie__avatar border-b border-gray w-full max-w-xs  overflow-hidden  rounded-lg shadow-md" />
 	</div>
 
-<movie-player   :id='movie.id' />
+<appPlayer  type="movie" :id='movie.id' />
 
 <appDetails >
 	<span-ru-en slot="summary" ru="Описание" en="Overview" />
@@ -66,27 +66,23 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import moviePlayer from '@/components/movies/movie-player';
+import appPlayer from '@/components/ui/app-player';
 import appDetails from "@/components/ui/app-details";
 
 
 export default {
-components:{moviePlayer,appDetails},
+components:{appPlayer,appDetails},
 	computed : {
 		...mapGetters( 
 			{
 				movie:'movies/page/getMovie',
 			},
-
 		),
-
 	},
-
 	validate({ params }) {
     // Must be a number
-    	return /^\d+$/.test(params.id)
-	}
-	,
+		return /^\d+$/.test(params.id)
+	},
 	async fetch (context) {
 		const id = context.route.params.id ;
         await context.store.dispatch('movies/page/axiosMovie', id );

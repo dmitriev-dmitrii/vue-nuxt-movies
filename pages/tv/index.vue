@@ -2,7 +2,7 @@
 <div >
 	
 	<h1 class=" font-bold text-3xl md:text-4xl lg:text-5xl font-heading ">
-		<span-ru-en ru="Фильмы" en="Movies"/>
+		<span-ru-en ru="Сериалы" en="tv"/>
 	</h1>
 
 	<div class="flex flex-wrap mb-4 mt-4">
@@ -58,13 +58,16 @@ methods: {
 }
 
 },
-
+	
 	async fetch (context) {
-
-		for (let index = 0; index < context.store.state.movies.list.moviesTypes.length; index++) {
-			await context.store.dispatch('movies/list/axiosMovies', [index] )
+		try {
+			for (let index = 0; index < context.store.state.movies.list.moviesTypes.length; index++) {
+				await context.store.dispatch('movies/list/axiosMovies', [index] )
+			}
+		} 
+		catch (error) {
+			console.log(error);
 		}
-
 	},
 	
 
