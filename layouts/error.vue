@@ -9,9 +9,9 @@
           md:text-4xl
           lg:text-5xl
           font-heading
-          mb-4
           xl:max-w-xs
           capitalize
+          text-red
         "
       >
         Page not found
@@ -25,17 +25,14 @@
           md:text-4xl
           lg:text-5xl
           font-heading
-          mb-4
           xl:max-w-xs
           capitalize
+          text-red
         "
       >
-        An error occurred
+        {{error.message}} : {{error.statusCode}}
       </h1>
-      <pre>
-      {{ error }}
-    </pre
-      >
+
     </main>
   </div>
 </template>

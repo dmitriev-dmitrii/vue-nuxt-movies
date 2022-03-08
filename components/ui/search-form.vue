@@ -9,6 +9,7 @@
     <ul :class="{'active': inputFocused }"  class="ul-search-result text-gray-dark absolute w-full  bg-white border border-gray border-t-0 rounded-bl-md rounded-br-md  shadow ">
       <li v-if="loading" :class=searchResultCardStyles ><loadingSpinner>loading...</loadingSpinner></li>
       <li v-for="item in searchResultArray" :key=item.id  :class="[searchResultCardStyles,{'hidden': loading}]"> <NuxtLink  :to="`${routerLinkUrl(item)}`"  class="block w-full flex" >{{ item.title || item.name }} <span class="ml-auto block font-normal italic text-right pl-2">{{item.media_type}}</span> </NuxtLink></li>
+      <li v-if="error && !loading" :class=searchResultCardStyles > <span-ru-en class="text-red" ru="Ошибка сервера, попробуйте позднее" en="Server Error , try letter" /></li>
     </ul>
 
   </form>
@@ -31,15 +32,24 @@ data:  () =>{
       timeOutSearchReqest:false,
       loading:false,
       inputFocused:false,
-      searchInputValue:''
+      searchInputValue:'',
+      error:false,
     }
   },
   methods:{
     sendSearchReqest : async function () {
+      try {
+        
       // console.log('time out ? sended request');
       const request = await axios.get(`${api.url}/search/multi?${api.key}&language=en&query=${this.searchInputValue}`)
       this.searchResultArray = request.data.results;
-      this.loading= false;
+      this.error=false;
+      } catch (error) {
+        console.log(error);
+        this.error=true;
+      }finally{
+        this.loading= false
+      }
     },
     routerLinkUrl: function (obj) {
       if (obj.media_type == 'person'){return `/persons/person/${obj.id}`}
