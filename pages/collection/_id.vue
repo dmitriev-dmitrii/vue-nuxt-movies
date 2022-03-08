@@ -61,11 +61,13 @@ export default {
 	},
 
   async fetch(context) {
-    await context.store.dispatch(
-      "collection/axiosCollection",
-      context.route.params.id
-    );
-  },
+    try {
+      await context.store.dispatch("collection/axiosCollection", context.route.params.id);
+    } catch (error) {
+			context.error(error)
+		}
+  }
+  
 };
 </script>
 

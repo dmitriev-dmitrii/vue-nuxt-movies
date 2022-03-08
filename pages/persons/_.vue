@@ -46,8 +46,13 @@ validate ({route}) {
     },
 
 	async fetch (context) {
+		try {
         await context.store.dispatch('persons/list/axiosPersons', context.route.params.pathMatch )
-	},
+		} catch (error) {
+			context.error(error)
+		}
+	}
+	,
 }
 </script>
 

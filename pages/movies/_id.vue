@@ -84,8 +84,12 @@ components:{appPlayer,appDetails},
 		return /^\d+$/.test(params.id)
 	},
 	async fetch (context) {
+		try {
 		const id = context.route.params.id ;
         await context.store.dispatch('movies/page/axiosMovie', id );
+		} catch (error) {
+			context.error(error)
+		}
 	},
 
 }

@@ -70,9 +70,13 @@ components:{appDetails},
 	},
 
   async fetch(context) {
+    try {
     const id = context.route.params.id
     await context.store.dispatch("persons/page/axiosPerson",id);
     await context.store.dispatch("persons/page/axiosPersonMoviesList",id);
+    } catch (error) {
+			context.error(error)
+		}
   },
 };
 </script>

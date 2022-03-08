@@ -41,9 +41,13 @@ name:'home' ,
     }),
   },
   async fetch(context) {
-    await context.store.dispatch("home/axiosMovies");
-    await context.store.dispatch("home/axiosPersons");
-    await context.store.dispatch("home/axiosSerials");
+    try {
+      await context.store.dispatch("home/axiosMovies");
+      await context.store.dispatch("home/axiosPersons");
+      await context.store.dispatch("home/axiosSerials");
+    } catch (error) {
+			context.error(error)
+		}
   },
 
 }

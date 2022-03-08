@@ -18,8 +18,9 @@
 
 				<div class=" rounded-lg  border border-gray font-bold  overflow-hidden flex justify-center items-center flex-col text-3xl hover:bg-green-light transition ease-in-out  "
 					:class="{hidden : movieType.pagesLoadedCounter == movieType.totalPages}">
-						<button v-if="!movieCardIsloading" :class="loadMoreBtnStyles" @click="loadMoreData (index)" > <nuxtIcon></nuxtIcon>  load <br> More   </button>
-						<span v-else :class="loadMoreBtnStyles"> <loadingSpinner /> Loading...</span>
+						<button  :class="[loadMoreBtnStyles,{'opacity-0': movieCardIsloading}]" @click="loadMoreData (index)" > <nuxtIcon></nuxtIcon>  load <br> More   </button>
+						<span  v-if="movieCardIsloading" class="text-green absolute" > <loadingSpinner /> Loading...</span>
+						
 				</div>
 			</div>
 		</div>
@@ -60,11 +61,13 @@ methods: {
 },
 
 	async fetch (context) {
-
-		for (let index = 0; index < context.store.state.movies.list.moviesTypes.length; index++) {
-			await context.store.dispatch('movies/list/axiosMovies', [index] )
+		try {
+			for (let index = 0; index < context.store.state.movies.list.moviesTypes.length; index++) {
+				await context.store.dispatch('movies/list/axiosMovies', [index] )
+			}
+		} catch (error) {
+			context.error(error)
 		}
-
 	},
 	
 
