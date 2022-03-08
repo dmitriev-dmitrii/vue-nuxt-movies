@@ -44,6 +44,7 @@ data:  () =>{
     routerLinkUrl: function (obj) {
       if (obj.media_type == 'person'){return `/persons/person/${obj.id}`}
       if (obj.media_type == 'movie'){return `/movies/${obj.id}`}
+      if (obj.media_type == 'tv'){return `/tv/${obj.id}`}
     },
     clearSearchResult: function () {
         this.searchResultArray =[];

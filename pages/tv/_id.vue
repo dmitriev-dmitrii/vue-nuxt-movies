@@ -46,7 +46,7 @@
 	{{ tv.overview }}
 </appDetails>
 
-<div class="pt-8" v-if="!!tv.created_by">
+<div class="pt-8" v-if="tv.created_by.length > 0">
     <h3  class="font-medium  text-md "> <span-ru-en ru="Cоздатели" en="Created By:" /> </h3>
 	<small-persons-list :personsList="tv.created_by"></small-persons-list>
 </div> 
